@@ -1,0 +1,87 @@
+---
+title: "EDA"
+author: "Danny Luo"
+date: "4/18/2021"
+output: pdf_document
+---
+```{r}
+library(dplyr)
+```
+
+```{r}
+data <- read.delim("../data-final.csv",header=TRUE)
+
+```
+
+
+```{r}
+#take only response data
+data_reduced <- data[,1:50]
+
+#change to numeric
+for(i in 1:50){
+  data_reduced[,i]=as.numeric(data_reduced[,i])-1
+}
+
+pos_keyed_vars <-  c('EXT1', 'EXT3', 'EXT5', 'EXT7', 'EXT9',
+                    'EST1', 'EST3', 'EST5', 'EST6', 'EST7', 
+                    'EST8', 'EST9', 'EST10',
+                    'AGR2', 'AGR4', 'AGR6', 'AGR8', 'AGR9', 'AGR10',
+                    'CSN1', 'CSN3', 'CSN5', 'CSN7', 'CSN9', 'CSN10', 
+                    'OPN1', 'OPN3', 'OPN5', 'OPN7', 'OPN8', 'OPN9', 
+                    'OPN10')
+neg_keyed_vars <-  c('EXT2', 'EXT4', 'EXT6', 'EXT8', 'EXT10',
+                    'EST2', 'EST4',
+                    'AGR1', 'AGR3', 'AGR5', 'AGR7', 
+                    'CSN2', 'CSN4', 'CSN6', 'CSN8', 
+                    'OPN2', 'OPN4', 'OPN6')
+
+for(key in neg_keyed_vars){
+  data_reduced[key]=6-data_reduced[key]
+}
+
+score_data <- data_reduced %>% mutate(
+                                    EST=rowSums(data_reduced[11:20])/10,
+                                    EXT=rowSums(data_reduced[1:10])/10,
+                                    OPN=rowSums(data_reduced[41:50])/10,
+                                    AGR=rowSums(data_reduced[21:30])/10,
+                                    CSN=rowSums(data_reduced[31:40])/10)
+score_data_final <- score_data[,51:55]
+
+```
+
+
+```{r}
+##############
+#function to show k means result 
+##############
+kmeans_plot <- function(data,k ){
+  centers <- kmeans(data, k)$centers
+  par(mfrow=c(k/2,2))
+  for(i in 1:k){
+    plot(x=1:5,centers[i,],ylim = c(0,5),main=paste("means vector",i))
+  }
+}
+
+
+```
+
+
+```{r}
+#plot
+kmeans_plot(score_data_final,6)
+
+```
+
+
+
+```{r}
+#normalcy check
+for(i in 1:5){
+  hist(score_data_final[,5])
+}
+
+```
+
+
+
