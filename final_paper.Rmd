@@ -26,11 +26,7 @@ We adopt this two phase modeling due to expensive computational cost given the g
 
 # Data
 
-A couple of paragraphs describing the data to be used. You may wish to
-discuss: (i) data sources – where are you getting the data? (ii) data description –
-what data / variables will be used for modeling? (iii) data type – ordinal discrete,
-nominal discrete, continuous, etc., and (iv) data scraping / wrangling – how to
-extract and clean data for modeling? See project rubric for details
+This dataset contains $1,015,342$ questionnaire answers collected online by Open Psychometrics. The test uses the Big-Five Factor Markers from the International Personality Item Pool, developed by Goldberg (1992). The test consists of fifty items that the respondent must rate on how true they are about him/her on a five point scale where $1 =$ Disagree, $3=$ Neutral and $5=$ Agree. Responses to this test was recorded anonymously.
 
 ```{r gg-oz-plot, echo=FALSE,  message=FALSE,warning=FALSE,fig.cap = "Life expectancy from 1952 - 2007 for Australia. Life expentancy increases steadily except from 1962 to 1969. We can safely say that our life expectancy is higher than it has ever been!"}
 library(ggplot2)

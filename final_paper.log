@@ -1,14 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  24 APR 2021 16:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.4.25)  25 APR 2021 05:03
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**final_paper.tex
-(./final_paper.tex
+**./final_paper.tex
+(final_paper.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18> (/Users/zepingluo/Library/TinyTeX/texmf-dist/
-tex/latex/base/article.cls
+L3 programming layer <2021-02-18> (C:\Users\woshi\AppData\Local\Programs\MiKTeX
+\tex/latex/base\article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
 File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count179
@@ -22,7 +20,7 @@ File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -56,30 +54,20 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks15
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
-LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2020/09/23 v2.17i AMS math features
 \@mathmargin=\skip49
 For additional information on amsmath, use the `?' option.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks16
+\@emptytoks=\toks15
 \ex@=\dimen139
-)) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen140
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count187
@@ -102,114 +90,173 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \dotsspace@=\muskip16
 \c@parentequation=\count194
 \dspbrk@lvl=\count195
-\tag@help=\toks17
+\tag@help=\toks16
 \row@=\count196
 \column@=\count197
 \maxfields@=\count198
-\andhelp@=\toks18
+\andhelp@=\toks17
 \eqnshift@=\dimen142
 \alignsep@=\dimen143
 \tagshift@=\dimen144
 \tagwidth@=\dimen145
 \totwidth@=\dimen146
 \lineht@=\dimen147
-\@envbody=\toks19
+\@envbody=\toks18
 \multlinegap=\skip50
 \multlinetaggap=\skip51
-\mathdisplay@stack=\toks20
+\mathdisplay@stack=\toks19
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
-)) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.sty
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/base/fixltx2e.sty
-Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
-Applying: [2015/01/01] Old fixltx2e package on input line 46.
-
-Package fixltx2e Warning: fixltx2e is not required with releases after 2015
-(fixltx2e)                All fixes are now in the LaTeX kernel.
-(fixltx2e)                See the latexrelease package for details.
-
-Already applied: [0000/00/00] Old fixltx2e package on input line 53.
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
 2.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2020/08/01 v1.3d Input encoding file
-\inpenc@prehook=\toks21
-\inpenc@posthook=\toks22
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+\inpenc@prehook=\toks20
+\inpenc@posthook=\toks21
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+Package: microtype 2021/03/14 v2.8c Micro-typographical refinements (RS)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+\MT@toks=\toks23
+\MT@count=\count199
+LaTeX Info: Redefining \textls on input line 790.
+\MT@outer@kern=\dimen148
+LaTeX Info: Redefining \textmicrotypecontext on input line 1374.
+\MT@listname@count=\count266
+
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
+tex.def
+File: microtype-pdftex.def 2021/03/14 v2.8c Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 915.
+LaTeX Info: Redefining \lslig on input line 915.
+\MT@outer@space=\skip52
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+File: microtype.cfg 2021/03/14 v2.8c microtype main configuration file (RS)
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 )
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.
-sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys.s
+ty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.st
+y
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count267
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
+Package: xurl 2020/12/30 v 0.09a modify URL breaks
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.st
+y
+Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
+
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.st
-y
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks23
 )
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.st
-y
-Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-)
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinek
-eys.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.st
-y
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.
-sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.st
-y
-Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
-\@linkdim=\dimen148
-\Hy@linkcounter=\count199
-\Hy@pagecounter=\count266
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+\@linkdim=\dimen149
+\Hy@linkcounter=\count268
+\Hy@pagecounter=\count269
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref-langpa
-tches.def
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref-langp
+atches.def
 File: hyperref-langpatches.def 2021-02-27 v7.00k Hyperref: patches for babel la
 nguages
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.st
-y
+)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count267
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+\Hy@SavedSpaceFactor=\count270
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -222,24 +269,20 @@ Package hyperref Info: Plain pages OFF on input line 4207.
 Package hyperref Info: Backreferencing OFF on input line 4212.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count268
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip17
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
+\c@Hy@tempcnt=\count271
 LaTeX Info: Redefining \url on input line 4804.
-\XeTeXLinkMargin=\dimen149
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+\XeTeXLinkMargin=\dimen150
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.
-sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count269
-\Field@Width=\dimen150
-\Fld@charsize=\dimen151
+\Fld@menulength=\count272
+\Field@Width=\dimen151
+\Fld@charsize=\dimen152
 Package hyperref Info: Hyper figures OFF on input line 6075.
 Package hyperref Info: Link nesting OFF on input line 6080.
 Package hyperref Info: Hyper index ON on input line 6083.
@@ -249,165 +292,218 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6100.
 Package hyperref Info: PDF/A mode OFF on input line 6105.
 LaTeX Info: Redefining \ref on input line 6145.
 LaTeX Info: Redefining \pageref on input line 6149.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
 Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
 )
-\Hy@abspage=\count270
-\c@Item=\count271
-\c@Hfootnote=\count272
+\Hy@abspage=\count273
+\c@Item=\count274
+\c@Hfootnote=\count275
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2021-02-27 v7.00k Hyperref driver for pdfTeX
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
 )
-\Fld@listcount=\count273
-\c@bookmark@seq@number=\count274
+\Fld@listcount=\count276
+\c@bookmark@seq@number=\count277
 
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfile
-check.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniqueco
-unter.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
-\Hy@SectionHShift=\skip52
+\Hy@SectionHShift=\skip53
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 35.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
+File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
+\BKM@id=\count278
+)) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.st
+y
 Package: geometry 2020/01/02 v5.9 Page Geometry
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count275
-\Gm@cntv=\count276
-\c@Gm@tempcnt=\count277
-\Gm@bindingoffset=\dimen152
-\Gm@wd@mp=\dimen153
-\Gm@odd@mp=\dimen154
-\Gm@even@mp=\dimen155
-\Gm@layoutwidth=\dimen156
-\Gm@layoutheight=\dimen157
-\Gm@layouthoffset=\dimen158
-\Gm@layoutvoffset=\dimen159
+\Gm@cnth=\count279
+\Gm@cntv=\count280
+\c@Gm@tempcnt=\count281
+\Gm@bindingoffset=\dimen153
+\Gm@wd@mp=\dimen154
+\Gm@odd@mp=\dimen155
+\Gm@even@mp=\dimen156
+\Gm@layoutwidth=\dimen157
+\Gm@layoutheight=\dimen158
+\Gm@layouthoffset=\dimen159
+\Gm@layoutvoffset=\dimen160
 \Gm@dimlist=\toks24
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\longtable.s
+ty
 Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
-\LTleft=\skip53
-\LTright=\skip54
-\LTpre=\skip55
-\LTpost=\skip56
-\LTchunksize=\count278
-\LTcapwidth=\dimen160
+\LTleft=\skip54
+\LTright=\skip55
+\LTpre=\skip56
+\LTpost=\skip57
+\LTchunksize=\count282
+\LTcapwidth=\dimen161
 \LT@head=\box49
 \LT@firsthead=\box50
 \LT@foot=\box51
 \LT@lastfoot=\box52
-\LT@cols=\count279
-\LT@rows=\count280
-\c@LT@tables=\count281
-\c@LT@chunks=\count282
+\LT@cols=\count283
+\LT@rows=\count284
+\c@LT@tables=\count285
+\c@LT@chunks=\count286
 \LT@p@ftn=\toks25
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen161
-\lightrulewidth=\dimen162
-\cmidrulewidth=\dimen163
-\belowrulesep=\dimen164
-\belowbottomsep=\dimen165
-\aboverulesep=\dimen166
-\abovetopsep=\dimen167
-\cmidrulesep=\dimen168
-\cmidrulekern=\dimen169
-\defaultaddspace=\dimen170
-\@cmidla=\count283
-\@cmidlb=\count284
-\@aboverulesep=\dimen171
-\@belowrulesep=\dimen172
-\@thisruleclass=\count285
-\@lastruleclass=\count286
-\@thisrulewidth=\dimen173
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
-Package: footnote 1997/01/28 1.13 Save footnotes around boxes
-\fn@notes=\box53
-\fn@width=\dimen174
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+\heavyrulewidth=\dimen162
+\lightrulewidth=\dimen163
+\cmidrulewidth=\dimen164
+\belowrulesep=\dimen165
+\belowbottomsep=\dimen166
+\aboverulesep=\dimen167
+\abovetopsep=\dimen168
+\cmidrulesep=\dimen169
+\cmidrulekern=\dimen170
+\defaultaddspace=\dimen171
+\@cmidla=\count287
+\@cmidlb=\count288
+\@aboverulesep=\dimen172
+\@belowrulesep=\dimen173
+\@thisruleclass=\count289
+\@lastruleclass=\count290
+\@thisrulewidth=\dimen174
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count291
+\calc@Bcount=\count292
+\calc@Adimen=\dimen175
+\calc@Bdimen=\dimen176
+\calc@Askip=\skip58
+\calc@Bskip=\skip59
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count293
+\calc@Cskip=\skip60
+)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/footnotehyper\footnoteh
+yper.sty
+Package: footnotehyper 2021/02/04 v1.1d hyperref aware footnote.sty (JFB)
+\FNH@notes=\box53
+\FNH@width=\dimen177
+\FNH@toks=\toks26
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cf
-g
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
-))
-\Gin@req@height=\dimen175
-\Gin@req@width=\dimen176
-) (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/grffile/grffile.sty
-Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
-y)
-Package grffile Info: This package is an empty stub for compatibility on input 
-line 40.
 )
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdft
-ex.def
+\Gin@req@height=\dimen178
+\Gin@req@width=\dimen179
+)
+\cslhangindent=\skip61
+\csllabelwidth=\skip62
+
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count287
+\l__color_backend_stack_int=\count294
 \l__pdf_internal_box=\box54
-) (./final_paper.aux)
+) (final_paper.aux)
 \openout1 = `final_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-Package hyperref Info: Link coloring OFF on input line 74.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Info: Redefining \microtypecontext on input line 101.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 101.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count295
+\scratchdimen=\dimen180
+\scratchbox=\box55
+\nofMPsegments=\count296
+\nofMParguments=\count297
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count298
+\MPscratchDim=\dimen181
+\MPnumerator=\count299
+\makeMPintoPDFobject=\count300
+\everyMPtoPDFconversion=\toks28
+)
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package hyperref Info: Link coloring OFF on input line 101.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitl
-estring.sty
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count288
+\c@section@level=\count301
 )
-LaTeX Info: Redefining \ref on input line 74.
-LaTeX Info: Redefining \pageref on input line 74.
-LaTeX Info: Redefining \nameref on input line 74.
-(./final_paper.out) (./final_paper.out)
-\@outlinefile=\write3
-\openout3 = `final_paper.out'.
-
+LaTeX Info: Redefining \ref on input line 101.
+LaTeX Info: Redefining \pageref on input line 101.
+LaTeX Info: Redefining \nameref on input line 101.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -442,122 +538,184 @@ LaTeX Info: Redefining \nameref on input line 74.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-ba
-se.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys
-.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-6.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+03.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-6.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+03.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-76.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
+103.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-76.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
+103.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 76.
+(Font)              <12> on input line 103.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 76.
+(Font)              <8> on input line 103.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 76.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 76.
-
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+(Font)              <6> on input line 103.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 103
+.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 76.
-
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Trying to load font information for U+msb on input line 103
+.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./final_paper.toc)
-\tf@toc=\write4
-\openout4 = `final_paper.toc'.
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) (final_paper.toc)
+\tf@toc=\write3
+\openout3 = `final_paper.toc'.
 
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9
-5.
-(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+22.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
 
-{/Users/zepingluo/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-]
-<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=58, 469.755pt x 325.215pt>
-
+{C:/Users/woshi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 132.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 132.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 132.
+<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=37, 459.7175pt x 315.1775p
+t>
 File: final_paper_files/figure-latex/gg-oz-plot-1.pdf Graphic file (type pdf)
 <use final_paper_files/figure-latex/gg-oz-plot-1.pdf>
 Package pdftex.def Info: final_paper_files/figure-latex/gg-oz-plot-1.pdf  used 
-on input line 113.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 120.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 120.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 120.
+on input line 136.
+(pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 120.
+(amsmath)                 on input line 143.
 
 [2 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
-Underfull \hbox (badness 1533) in paragraph at lines 167--169
-[][]\T1/lmr/m/n/10 [6] ``Big five per-son-al-ity test. Open-source psy-cho-met-
-rics project,'' Aug. 02, 2019. []$https : / /
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 176--179
+[][] []
  []
 
-[3] (./final_paper.aux)
-Package rerunfilecheck Info: File `final_paper.out' has not changed.
-(rerunfilecheck)             Checksum: D9A73CD3D6DD674F0689F8F508C994E7;583.
- ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--179
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 180--183
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--183
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 184--187
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--187
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 188--191
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--191
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 192--195
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--195
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 196--199
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 200--203
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--203
+
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 204--207
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 204--207
+
+ []
+
+[3] (final_paper.aux) ) 
 Here is how much of TeX's memory you used:
- 9706 strings out of 480962
- 142761 string characters out of 5906513
- 442654 words of memory out of 5000000
- 26721 multiletter control sequences out of 15000+600000
- 450345 words of font info for 66 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 71i,6n,74p,967b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/Users/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/U
-sers/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/Us
-ers/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Use
-rs/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/User
-s/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/zep
-ingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</Users/zepingl
-uo/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/zepinglu
-o/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/zepingluo
-/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/zepingluo/
-Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></Users/zepingluo/L
-ibrary/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></Users/zepingluo/Lib
-rary/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/zepingluo/Libra
-ry/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/zepingluo/Library
-/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/zepingluo/Library/T
-inyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/zepingluo/Library/Ti
-nyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/zepingluo/Library/Tin
-yTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on final_paper.pdf (3 pages, 183074 bytes).
+ 12809 strings out of 479325
+ 193272 string characters out of 2856661
+ 530654 words of memory out of 3000000
+ 29930 multiletter control sequences out of 15000+600000
+ 453749 words of font info for 105 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 85i,6n,88p,969b,344s stack positions out of 5000i,500n,10000p,200000b,80000s
+{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/
+dvips/lm/lm-ec.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
+s/lm/lm-mathsy.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
+s/lm/lm-mathit.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
+s/lm/lm-mathex.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
+s/lm/lm-rm.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm
+/lm-ts1.enc}<C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmbx10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmbx12.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmex10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmmi10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmmi7.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/
+lmr10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
+mr12.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
+r17.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr
+i10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
+y10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
+y7.pfb>
+Output written on final_paper.pdf (3 pages, 200852 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
+ 154 PDF objects out of 1000 (max. 8388607)
  30 named destinations out of 1000 (max. 500000)
- 62 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28734 words of extra memory for PDF output out of 29859 (max. 10000000)
 
