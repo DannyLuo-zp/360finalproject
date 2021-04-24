@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  24 APR 2021 14:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  24 APR 2021 16:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -493,60 +493,71 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 \openout4 = `final_paper.toc'.
 
-<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=41, 469.755pt x 325.215pt>
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9
+5.
+(/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [1
+
+{/Users/zepingluo/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+]
+<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=56, 469.755pt x 325.215pt>
 
 File: final_paper_files/figure-latex/gg-oz-plot-1.pdf Graphic file (type pdf)
 <use final_paper_files/figure-latex/gg-oz-plot-1.pdf>
 Package pdftex.def Info: final_paper_files/figure-latex/gg-oz-plot-1.pdf  used 
-on input line 96.
+on input line 113.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[1
-
-{/Users/zepingluo/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-] [2 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 112.
+(Font)              <10> on input line 120.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 112.
+(Font)              <7> on input line 120.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 112.
+(Font)              <5> on input line 120.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 112.
+(amsmath)                 on input line 120.
+
+[2 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
+Underfull \hbox (badness 1533) in paragraph at lines 167--169
+[][]\T1/lmr/m/n/10 [6] ``Big five per-son-al-ity test. Open-source psy-cho-met-
+rics project,'' Aug. 02, 2019. []$https : / /
+ []
 
 [3] (./final_paper.aux)
 Package rerunfilecheck Info: File `final_paper.out' has not changed.
-(rerunfilecheck)             Checksum: CE3B98CD48CD49A83E706C0CC0BB4D48;583.
+(rerunfilecheck)             Checksum: D9A73CD3D6DD674F0689F8F508C994E7;583.
  ) 
 Here is how much of TeX's memory you used:
- 9667 strings out of 480962
- 141735 string characters out of 5906513
- 441654 words of memory out of 5000000
- 26693 multiletter control sequences out of 15000+600000
- 449980 words of font info for 65 fonts, out of 8000000 for 9000
+ 9706 strings out of 480962
+ 142761 string characters out of 5906513
+ 442654 words of memory out of 5000000
+ 26721 multiletter control sequences out of 15000+600000
+ 450345 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 71i,6n,74p,725b,331s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,6n,74p,967b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/U
 sers/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/Us
 ers/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Use
 rs/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/User
-s/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</Users/zep
-ingluo/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/zepi
-ngluo/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/zepin
-gluo/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/zeping
-luo/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></Users/zepingl
-uo/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></Users/zepingluo
-/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/zepingluo/L
-ibrary/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/zepingluo/Lib
-rary/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/zepingluo/Libra
-ry/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/zepingluo/Librar
-y/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/zepingluo/Library
-/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on final_paper.pdf (3 pages, 177009 bytes).
+s/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/zep
+ingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</Users/zepingl
+uo/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/zepinglu
+o/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/zepingluo
+/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/zepingluo/
+Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></Users/zepingluo/L
+ibrary/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></Users/zepingluo/Lib
+rary/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/zepingluo/Libra
+ry/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/zepingluo/Library
+/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/zepingluo/Library/T
+inyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/zepingluo/Library/Ti
+nyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/zepingluo/Library/Tin
+yTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
+Output written on final_paper.pdf (3 pages, 183026 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
+ 154 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
  62 words of extra memory for PDF output out of 10000 (max. 10000000)
 

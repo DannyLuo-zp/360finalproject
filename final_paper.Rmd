@@ -7,21 +7,30 @@ output:
 bibliography: mybib.bib
 link-citations: yes
 csl: ieee.csl
+nocite: '@*'
 ---
 # Introduction
 
+The Five Factor Model (FFM) of personality is a model for personality assessment that has been widely studied and applied in the field of Psychology. [@FFM_intro] It proposes 5 domains across which one's personality could be characterized. They are Openness to Experience, Conscientiousness, Extraversion, Agreeableness and Neuroticism (or in abbreviation, OCEAN) respectively. 
 
+While FFM presents a viable framework to evaluate individual personality's scores on those five traits, it does not identify any personality type by itself. To fully extract the value from FFM data usually means analyzing in depths the interaction between each dimensions or moving a step further in classifying individuals into homogenous personality profiles that could be interpretable under FFM.[@merz_latent_2011] Identifying those latent personality types will be of trememdous psychometric values. It will not only reveal correlations between each dimension of personality traits, but will also present us a fuller picture of compositions of human personalities. An ideal latent personality classification would also yield a simple and univariate measure of individual personality, that could be used in causal inference and prediction widely in the field of psychology and behavioral science. 
 
+Recent literatures have attempted with various techniques to approach this clustering tasks to identify personality types from FFM, including Latent Profile Analysis, Gaussian Mixture Model combined with Factor Analysis. [@merz_latent_2011,@gerlach_robust_2018] 
 
-The Big Five personality traits, also known as the five-factor model (FFM) and the OCEAN model, is a taxonomy, or grouping, for personality traits. When factor analysis (a statistical technique) is applied to personality survey data, some words used to describe aspects of personality are often applied to the same person. For example, someone described as conscientious is more likely to be described as "always prepared" rather than "messy". This theory is based therefore on the association between words but not on neuropsychological experiments. This theory uses descriptors of common language and therefore suggests five broad dimensions commonly used to describe the human personality and psyche.
+We propose an Bayesian unsupervised clustering algorithm that leverages a two-fold modeling structure:
 
-This is introduction.    This is the test for citation. [ see @anderson2015] This is the test for citing figure (See Figure \@ref(fig:gg-oz-plot))
+- A non-parametric Dirichlet process Gaussian mixture model to estimate size of clusters and their respective subpopulation parameters using a small portion of data
+- Feed the above result as prior into Gaussian mixture model with fixed cluster size, utilizing the rest of our data
 
- A few paragraphs which (i) motivate problem importance & relevance
-(supported by any pertinent literature), (ii) describe project goals and how such
-goals address the problem, (iii) a high-level roadmap of the proposed Bayesian
-modeling framework, and (iv) other relevant information for the reader. See project
-rubric for details.
+We adopt this two phase modeling due to expensive computational cost given the gigantic dataset. The final output will yield a clustering of all individuals into different latent personalities type that is highly interpretable using FFM framework. 
+
+# Data
+
+A couple of paragraphs describing the data to be used. You may wish to
+discuss: (i) data sources – where are you getting the data? (ii) data description –
+what data / variables will be used for modeling? (iii) data type – ordinal discrete,
+nominal discrete, continuous, etc., and (iv) data scraping / wrangling – how to
+extract and clean data for modeling? See project rubric for details
 
 ```{r gg-oz-plot, echo=FALSE,  message=FALSE,warning=FALSE,fig.cap = "Life expectancy from 1952 - 2007 for Australia. Life expentancy increases steadily except from 1962 to 1969. We can safely say that our life expectancy is higher than it has ever been!"}
 library(ggplot2)
@@ -35,13 +44,7 @@ gapminder %>%
 ```
 
 
-# Data
 
-A couple of paragraphs describing the data to be used. You may wish to
-discuss: (i) data sources – where are you getting the data? (ii) data description –
-what data / variables will be used for modeling? (iii) data type – ordinal discrete,
-nominal discrete, continuous, etc., and (iv) data scraping / wrangling – how to
-extract and clean data for modeling? See project rubric for details
 
 # Model
 $$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
@@ -76,17 +79,9 @@ A summary of key findings and potential impacts of your project.
 
 
 
+# References {-}
 
-
-
+<div id="refs"></div>
 
 # Appendix {-}
 
-
-
-
-
-
-
-
-# References {-}
