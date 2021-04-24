@@ -75,12 +75,13 @@ A summary of key findings and potential impacts of your project.
 
 
 
+# Appendix {-}
 
 
 
 
-# References
 
 
 
-# Appendix
+
+# References {-}
