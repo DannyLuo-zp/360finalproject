@@ -2,5 +2,60 @@
 title: "final_paper"
 author: "Danny Luo"
 date: "4/24/2021"
-output: pdf_document
+output:
+  bookdown::pdf_document2
+bibliography: mybib.bib
+link-citations: yes
+biblio-style: apalike
 ---
+# Introduction
+
+blablablablalbalbalblablalblalblal [ see @anderson2015] ljvaklbjklasbjlasj bklajblkajvla (See Figure \@ref(fig:gg-oz-plot))
+
+```{r gg-oz-plot, echo=FALSE,  message=FALSE,warning=FALSE,fig.cap = "Life expectancy from 1952 - 2007 for Australia. Life expentancy increases steadily except from 1962 to 1969. We can safely say that our life expectancy is higher than it has ever been!"}
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+gapminder %>%
+  filter(country == "Australia") %>%
+  ggplot(aes(x = year,
+             y = lifeExp)) + 
+  geom_point()
+```
+
+
+# Data
+
+# Model
+
+# Results
+
+
+# Conclusion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# References
