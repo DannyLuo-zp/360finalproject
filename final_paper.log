@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  24 APR 2021 16:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  24 APR 2021 16:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -501,7 +501,7 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 {/Users/zepingluo/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 ]
-<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=56, 469.755pt x 325.215pt>
+<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=58, 469.755pt x 325.215pt>
 
 File: final_paper_files/figure-latex/gg-oz-plot-1.pdf Graphic file (type pdf)
 <use final_paper_files/figure-latex/gg-oz-plot-1.pdf>
@@ -554,10 +554,10 @@ ry/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/zepingluo/Library
 inyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/zepingluo/Library/Ti
 nyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/zepingluo/Library/Tin
 yTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on final_paper.pdf (3 pages, 183026 bytes).
+Output written on final_paper.pdf (3 pages, 183074 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
+ 155 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
  30 named destinations out of 1000 (max. 500000)
  62 words of extra memory for PDF output out of 10000 (max. 10000000)
 
