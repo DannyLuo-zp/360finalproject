@@ -1,6 +1,6 @@
 ---
-title: "final_paper"
-author: "Danny Luo"
+title: "Bayesian Unsupervised Clustering Method For Uncovering Latent Personality Types "
+author: "Boxuan Li, Nianli Peng, Danny Luo"
 date: "4/24/2021"
 output:
   bookdown::pdf_document2
@@ -10,7 +10,13 @@ biblio-style: apalike
 ---
 # Introduction
 
-blablablablalbalbalblablalblalblal [ see @anderson2015] ljvaklbjklasbjlasj bklajblkajvla (See Figure \@ref(fig:gg-oz-plot))
+This is introduction.    This is the test for citation. [ see @anderson2015] This is the test for citing figure (See Figure \@ref(fig:gg-oz-plot))
+
+ A few paragraphs which (i) motivate problem importance & relevance
+(supported by any pertinent literature), (ii) describe project goals and how such
+goals address the problem, (iii) a high-level roadmap of the proposed Bayesian
+modeling framework, and (iv) other relevant information for the reader. See project
+rubric for details.
 
 ```{r gg-oz-plot, echo=FALSE,  message=FALSE,warning=FALSE,fig.cap = "Life expectancy from 1952 - 2007 for Australia. Life expentancy increases steadily except from 1962 to 1969. We can safely say that our life expectancy is higher than it has ever been!"}
 library(ggplot2)
@@ -26,9 +32,33 @@ gapminder %>%
 
 # Data
 
+A couple of paragraphs describing the data to be used. You may wish to
+discuss: (i) data sources – where are you getting the data? (ii) data description –
+what data / variables will be used for modeling? (iii) data type – ordinal discrete,
+nominal discrete, continuous, etc., and (iv) data scraping / wrangling – how to
+extract and clean data for modeling? See project rubric for details
+
 # Model
+$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation} 
+
+: Discussion & justification of the proposed Bayesian model framework
+(prior and sampling model). This discussion should elicit prior information on the
+problem, the data sources available, and relevant project goals. Any “downstream”
+uses of the model (e.g., for prediction, optimization, ranking) should be discussed
+in detail here. See project rubric for details.
+
+
+This is test for referencing equation. See equation \@ref(eq:binom)
 
 # Results
+Posterior analyses from the fitted Bayesian model, and a translation of
+such findings into meaningful & understandable conclusions for the target audience
+(e.g., engineers, business managers, policy-makers, etc). See project rubric for
+details.
 
 
 # Conclusion
@@ -37,16 +67,7 @@ gapminder %>%
 
 
 
-
-
-
-
-
-
-
-
-
-
+A summary of key findings and potential impacts of your project.
 
 
 
@@ -59,3 +80,7 @@ gapminder %>%
 
 
 # References
+
+
+
+# Appendix
