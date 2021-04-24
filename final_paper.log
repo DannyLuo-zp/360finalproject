@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  24 APR 2021 13:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  24 APR 2021 14:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -498,35 +498,35 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: final_paper_files/figure-latex/gg-oz-plot-1.pdf Graphic file (type pdf)
 <use final_paper_files/figure-latex/gg-oz-plot-1.pdf>
 Package pdftex.def Info: final_paper_files/figure-latex/gg-oz-plot-1.pdf  used 
-on input line 94.
+on input line 96.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 110.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 110.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 110.
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 110.
-
 [1
 
 {/Users/zepingluo/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-] [2 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>] [3] (./final_paper.au
-x)
+] [2 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 112.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 112.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 112.
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 112.
+
+[3] (./final_paper.aux)
 Package rerunfilecheck Info: File `final_paper.out' has not changed.
 (rerunfilecheck)             Checksum: CE3B98CD48CD49A83E706C0CC0BB4D48;583.
  ) 
 Here is how much of TeX's memory you used:
  9667 strings out of 480962
  141735 string characters out of 5906513
- 440654 words of memory out of 5000000
+ 441654 words of memory out of 5000000
  26693 multiletter control sequences out of 15000+600000
  449980 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 71i,6n,74p,334b,339s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,6n,74p,725b,331s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/U
 sers/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/Us
 ers/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Use
@@ -543,10 +543,10 @@ rary/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/zepingluo/Libra
 ry/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/zepingluo/Librar
 y/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/zepingluo/Library
 /TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on final_paper.pdf (3 pages, 175839 bytes).
+Output written on final_paper.pdf (3 pages, 177009 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 134 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
  23 named destinations out of 1000 (max. 500000)
  62 words of extra memory for PDF output out of 10000 (max. 10000000)
 
