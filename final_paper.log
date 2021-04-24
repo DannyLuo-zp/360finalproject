@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.4.25)  25 APR 2021 05:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.4.25)  25 APR 2021 05:43
 entering extended mode
 **./final_paper.tex
 (final_paper.tex
@@ -594,107 +594,108 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 132.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 132.
-<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=37, 459.7175pt x 315.1775p
+[2]
+<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=44, 459.7175pt x 315.1775p
 t>
 File: final_paper_files/figure-latex/gg-oz-plot-1.pdf Graphic file (type pdf)
 <use final_paper_files/figure-latex/gg-oz-plot-1.pdf>
 Package pdftex.def Info: final_paper_files/figure-latex/gg-oz-plot-1.pdf  used 
-on input line 136.
+on input line 271.
 (pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 143.
+(amsmath)                 on input line 278.
 
-[2 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 176--179
+[3] [4 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 311--314
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--179
+Underfull \hbox (badness 10000) in paragraph at lines 311--314
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 180--183
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 315--318
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--183
+Underfull \hbox (badness 10000) in paragraph at lines 315--318
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 184--187
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 319--322
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--187
+Underfull \hbox (badness 10000) in paragraph at lines 319--322
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 188--191
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 323--326
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 323--326
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 192--195
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 327--330
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--195
+Underfull \hbox (badness 10000) in paragraph at lines 327--330
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 196--199
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 331--334
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--199
+Underfull \hbox (badness 10000) in paragraph at lines 331--334
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 200--203
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 335--338
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--203
+Underfull \hbox (badness 10000) in paragraph at lines 335--338
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 204--207
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 339--342
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--207
+Underfull \hbox (badness 10000) in paragraph at lines 339--342
 
  []
 
-[3] (final_paper.aux) ) 
+[5] (final_paper.aux) ) 
 Here is how much of TeX's memory you used:
- 12809 strings out of 479325
- 193272 string characters out of 2856661
- 530654 words of memory out of 3000000
- 29930 multiletter control sequences out of 15000+600000
- 453749 words of font info for 105 fonts, out of 8000000 for 9000
+ 12829 strings out of 479325
+ 193490 string characters out of 2856661
+ 535654 words of memory out of 3000000
+ 29934 multiletter control sequences out of 15000+600000
+ 460196 words of font info for 113 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,6n,88p,969b,344s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 85i,6n,88p,969b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/
 dvips/lm/lm-ec.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
 s/lm/lm-mathsy.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
@@ -713,9 +714,9 @@ r17.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr
 i10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
 y10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
 y7.pfb>
-Output written on final_paper.pdf (3 pages, 200852 bytes).
+Output written on final_paper.pdf (5 pages, 207233 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
- 28734 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 163 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
+ 32830 words of extra memory for PDF output out of 35830 (max. 10000000)
 
