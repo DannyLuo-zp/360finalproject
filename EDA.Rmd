@@ -48,8 +48,8 @@ library(dirichletprocess)
 ```
 
 ```{r}
-data <- read.delim("../data-final.csv",header=TRUE)
-data <- read.delim("../data-final.csv",header=TRUE,skipNul= TRUE,na.strings = "NULL")
+
+data <- read.delim("data-final.csv",header=TRUE,skipNul= TRUE,na.strings = "NULL")
 
 ```
 
@@ -132,7 +132,7 @@ data.fa <- factanal(data_reduced, 5)
 
 ```{r}
 
-data <- score_data_final[1:1000,]
+data <- score_data_final[1:10000,]
 data_scale <- scale(data)
 dp <- DirichletProcessMvnormal(data_scale)
 ?DirichletProcessMvnormal
@@ -149,14 +149,171 @@ for(i in 1:3){
 dp$pointsPerCluster
 dp$clusterLabels
 dp$alpha
+```
 
+
+
+
+
+
+
+
+```{r}
 my_data <- readRDS("my_data.rds")
 my_data$clusterParameters
-my_data$clusterParametersChain[100]
+```
+
+```{r}
+data10000<-data_scale[1:10000,]
+data10000 <- cbind(data10000, cluster = my_data$clusterLabels)
+```
+
+
+
+
+
+
+
+```{r}
+library(bayestestR)
+library("mvtnorm")
+
+
+
+x3 <- rmvnorm(1000, my_data$clusterParameters$mu[,,3], my_data$clusterParameters$sig[,,3])
+
+Overlap3<-c()
+for(i in 1:my_data$numberClusters)
+{ if (i==3 || i==7 || i==8||i==9)
+  {Overlap3[i]= 0
+    next}
+  
+  else
+ { y <- rmvnorm(1000, my_data$clusterParameters$mu[,,i], my_data$clusterParameters$sig[,,i])
+
+Overlap3[i]=overlap(x3, y)}}
+max(Overlap3)
+which.max(Overlap3)
+
+for(i in 1:10000)
+{if(data10000[i,6]==3)
+{data10000[i,6]<-1}
+}
+
+
+x7 <- rmvnorm(1000, my_data$clusterParameters$mu[,,7], my_data$clusterParameters$sig[,,7])
+
+Overlap7<-c()
+for(i in 1:my_data$numberClusters)
+{ if (i==3 || i==7 || i==8||i==9)
+  {Overlap7[i]= 0
+    next}
+  
+  else
+ { y <- rmvnorm(1000, my_data$clusterParameters$mu[,,i], my_data$clusterParameters$sig[,,i])
+
+Overlap7[i]=overlap(x7, y)}}
+max(Overlap7)
+which.max(Overlap7)
+
+for(i in 1:10000)
+{if(data10000[i,6]==7)
+{data10000[i,6]<-5}
+}
+
+
+x8 <- rmvnorm(1000, my_data$clusterParameters$mu[,,7], my_data$clusterParameters$sig[,,7])
+
+Overlap8<-c()
+for(i in 1:my_data$numberClusters)
+{ if (i==3 || i==7 || i==8||i==9)
+  {Overlap8[i]= 0
+    next}
+  
+  else
+ { y <- rmvnorm(1000, my_data$clusterParameters$mu[,,i], my_data$clusterParameters$sig[,,i])
+
+Overlap8[i]=overlap(x8, y)}}
+max(Overlap8)
+which.max(Overlap8)
+
+for(i in 1:10000)
+{if(data10000[i,6]==8)
+{data10000[i,6]<-5}
+}
+
+
+x9 <- rmvnorm(1000, my_data$clusterParameters$mu[,,7], my_data$clusterParameters$sig[,,7])
+
+Overlap9<-c()
+for(i in 1:my_data$numberClusters)
+{ if (i==3 || i==7 || i==8||i==9)
+  {Overlap9[i]= 0
+    next}
+  
+  else
+ { y <- rmvnorm(1000, my_data$clusterParameters$mu[,,i], my_data$clusterParameters$sig[,,i])
+
+Overlap9[i]=overlap(x9, y)}}
+max(Overlap9)
+which.max(Overlap9)
+
+for(i in 1:10000)
+{if(data10000[i,6]==9)
+{data10000[i,6]<-5}
+}
+
 ```
 ```{r}
-my_data$clusterParameters
+library(Rfast)
+df <- as.data.frame(data10000)
+group1 <- df[df$cluster == 1, ]
+group2 <- df[df$cluster == 2, ]
+group3 <- df[df$cluster == 4, ]
+group4 <- df[df$cluster == 5, ]
+group5 <- df[df$cluster == 6, ]
+
+matrix1 <- as.matrix(group1)
+matrix1 <- matrix1[,-6]
+matrix2 <- as.matrix(group2)
+matrix2 <- matrix2[,-6]
+matrix3 <- as.matrix(group3)
+matrix3 <- matrix3[,-6]
+matrix4 <- as.matrix(group4)
+matrix4 <- matrix4[,-6]
+matrix5 <- as.matrix(group5)
+matrix5 <- matrix5[,-6]
+
+r1=mvnorm.mle(matrix1)
+r2=mvnorm.mle(matrix2)
+r3=mvnorm.mle(matrix3)
+r4=mvnorm.mle(matrix4)
+r5=mvnorm.mle(matrix5)
+
+
+p1=nrow(matrix1)/10000
+p2=nrow(matrix2)/10000
+p3=nrow(matrix3)/10000
+p4=nrow(matrix4)/10000
+p5=nrow(matrix5)/10000
+
+
 ```
+
+
+
+
+
+
+
+
+
+```{r}
+for(i in 1:9){
+ plot(x=1:5,my_data$clusterParameters$mu[,,i],ylim = c(-3,3),main=paste("means vector",i)) 
+}
+```
+
 
 ```{r}
 food <- read.csv("https://userpage.fu-berlin.de/soga/300/30100_data_sets/food-texture.csv",
