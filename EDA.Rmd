@@ -86,7 +86,7 @@ score_data <- data_reduced %>% mutate(
                                     OPN=rowSums(data_reduced[41:50])/10,
                                     AGR=rowSums(data_reduced[21:30])/10,
                                     CSN=rowSums(data_reduced[31:40])/10)
-score_data_final <- score_data[,51:55]
+score_data_final <- score_data_final<-na.omit(score_data[,51:55])
 
 ```
 
