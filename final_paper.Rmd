@@ -31,7 +31,16 @@ This dataset contains $1,015,342$ questionnaire answers collected through an int
 In this study we will analyze the data set and use a Bayesian unsupervised learning algorithm for clustering the participants.
 
 ```{r}
-data_raw = read.csv("data-final.csv", sep='\t')
+library(dplyr)
+library(dirichletprocess)
+library(ggplot2)
+```
+
+```{r}
+data_raw = read.csv("data-final.csv", sep='\t', na.strings = "NULL")
+```
+
+```{r}
 data = data.frame(data_raw)
 options.display.max_columns = 150
 
@@ -41,6 +50,33 @@ data <- data[ -c(52:53) ]
 print(nrow(data))
 head(data)
 ```
+
+```{r}
+table(is.na(data))
+```
+It looks like there are 89150 missing values.
+
+```{r}
+data <- na.omit(data)
+nrow(data)
+```
+After eliminating missing values, we have $1013558$ valid observations.
+
+```{r}
+countries <- data %>% count(country)
+countries <- countries[countries$n>=5000,]
+```
+
+```{r}
+ggplot(countries, aes(reorder(country, -n, sum), n, fill = country)) +
+  geom_bar(stat="identity", width = 0.8)+
+  geom_text(aes(label=n), vjust=-0.3, size=2)+
+  theme_minimal()+
+  theme(legend.position="none")+
+  labs(title= "Countries With More Than 5000 Participants",
+                      y="Participants", x = element_blank())
+```
+We see that the vast majority of the participants are from the U.S. We might be exposed to selection bias.
 
 \textbf{MAY wanna put this in Appendix}
 
