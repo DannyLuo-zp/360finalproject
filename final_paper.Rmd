@@ -26,7 +26,21 @@ We adopt this two phase modeling due to expensive computational cost given the g
 
 # Data
 
-This dataset contains $1,015,342$ questionnaire answers collected through an interactive online personality test by Open Psychometrics from 2016 to 2018. The personality test was constructed with the "Big-Five Factor Markers" from the International Personality Item Pool, developed by Goldberg (1992). It consists of fifty items that the respondent must rate on how true they are about him/her on a five point scale where $1 =$ Disagree, $3=$ Neutral and $5=$ Agree. Responses to this test was recorded anonymously.
+This dataset contains $1,015,342$ questionnaire answers collected through an interactive online personality test by Open Psychometrics from 2016 to 2018. The personality test was constructed with the "Big-Five Factor Markers" from the International Personality Item Pool, developed by Goldberg (1992). It consists of fifty items that the respondent must rate on how true they are about him/her on a five point scale where $1 =$ Disagree, $3=$ Neutral and $5=$ Agree. Responses to this test was recorded anonymously. More information about each question is included in the appendix.
+
+In this study we will analyze the data set and use a Bayesian unsupervised learning algorithm for clustering the participants.
+
+```{r}
+data_raw = read.csv("data-final.csv", sep='\t')
+data = data.frame(data_raw)
+options.display.max_columns = 150
+
+data <- data[ -c(51:107) ]
+data <- data[ -c(52:53) ]
+
+print(nrow(data))
+head(data)
+```
 
 \textbf{MAY wanna put this in Appendix}
 
