@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.4.25)  25 APR 2021 05:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.4.27)  27 APR 2021 05:09
 entering extended mode
 **./final_paper.tex
 (final_paper.tex
@@ -347,62 +347,77 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen160
 \Gm@dimlist=\toks24
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
-
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
+Package: fancyvrb 2021/01/20 v3.7 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count282
+\FV@InFile=\read2
+\FV@TabBox=\box49
+\c@FancyVerbLine=\count283
+\FV@StepNumber=\count284
+\FV@OutFile=\write3
+) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip54
+\fb@frw=\dimen161
+\fb@frh=\dimen162
+\FrameRule=\dimen163
+\FrameSep=\dimen164
+)
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\longtable.s
 ty
 Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
-\LTleft=\skip54
-\LTright=\skip55
-\LTpre=\skip56
-\LTpost=\skip57
-\LTchunksize=\count282
-\LTcapwidth=\dimen161
-\LT@head=\box49
-\LT@firsthead=\box50
-\LT@foot=\box51
-\LT@lastfoot=\box52
-\LT@cols=\count283
-\LT@rows=\count284
-\c@LT@tables=\count285
-\c@LT@chunks=\count286
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count285
+\LTcapwidth=\dimen165
+\LT@head=\box50
+\LT@firsthead=\box51
+\LT@foot=\box52
+\LT@lastfoot=\box53
+\LT@cols=\count286
+\LT@rows=\count287
+\c@LT@tables=\count288
+\c@LT@chunks=\count289
 \LT@p@ftn=\toks25
 ) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen162
-\lightrulewidth=\dimen163
-\cmidrulewidth=\dimen164
-\belowrulesep=\dimen165
-\belowbottomsep=\dimen166
-\aboverulesep=\dimen167
-\abovetopsep=\dimen168
-\cmidrulesep=\dimen169
-\cmidrulekern=\dimen170
-\defaultaddspace=\dimen171
-\@cmidla=\count287
-\@cmidlb=\count288
-\@aboverulesep=\dimen172
-\@belowrulesep=\dimen173
-\@thisruleclass=\count289
-\@lastruleclass=\count290
-\@thisrulewidth=\dimen174
+\heavyrulewidth=\dimen166
+\lightrulewidth=\dimen167
+\cmidrulewidth=\dimen168
+\belowrulesep=\dimen169
+\belowbottomsep=\dimen170
+\aboverulesep=\dimen171
+\abovetopsep=\dimen172
+\cmidrulesep=\dimen173
+\cmidrulekern=\dimen174
+\defaultaddspace=\dimen175
+\@cmidla=\count290
+\@cmidlb=\count291
+\@aboverulesep=\dimen176
+\@belowrulesep=\dimen177
+\@thisruleclass=\count292
+\@lastruleclass=\count293
+\@thisrulewidth=\dimen178
 ) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count291
-\calc@Bcount=\count292
-\calc@Adimen=\dimen175
-\calc@Bdimen=\dimen176
-\calc@Askip=\skip58
-\calc@Bskip=\skip59
+\calc@Acount=\count294
+\calc@Bcount=\count295
+\calc@Adimen=\dimen179
+\calc@Bdimen=\dimen180
+\calc@Askip=\skip59
+\calc@Bskip=\skip60
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count293
-\calc@Cskip=\skip60
+\calc@Ccount=\count296
+\calc@Cskip=\skip61
 )
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/footnotehyper\footnoteh
 yper.sty
 Package: footnotehyper 2021/02/04 v1.1d hyperref aware footnote.sty (JFB)
-\FNH@notes=\box53
-\FNH@width=\dimen177
+\FNH@notes=\box54
+\FNH@width=\dimen181
 \FNH@toks=\toks26
 ) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
@@ -417,46 +432,46 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
 )
-\Gin@req@height=\dimen178
-\Gin@req@width=\dimen179
+\Gin@req@height=\dimen182
+\Gin@req@width=\dimen183
 )
-\cslhangindent=\skip61
-\csllabelwidth=\skip62
+\cslhangindent=\skip62
+\csllabelwidth=\skip63
 
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count294
-\l__pdf_internal_box=\box54
+\l__color_backend_stack_int=\count297
+\l__pdf_internal_box=\box55
 ) (final_paper.aux)
 \openout1 = `final_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Info: Redefining \microtypecontext on input line 101.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Info: Redefining \microtypecontext on input line 141.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 101.
+LaTeX Info: Redefining \showhyphens on input line 141.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -467,16 +482,16 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count295
-\scratchdimen=\dimen180
-\scratchbox=\box55
-\nofMPsegments=\count296
-\nofMParguments=\count297
+\scratchcounter=\count298
+\scratchdimen=\dimen184
+\scratchbox=\box56
+\nofMPsegments=\count299
+\nofMParguments=\count300
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count298
-\MPscratchDim=\dimen181
-\MPnumerator=\count299
-\makeMPintoPDFobject=\count300
+\MPscratchCnt=\count301
+\MPscratchDim=\dimen185
+\MPnumerator=\count302
+\makeMPintoPDFobject=\count303
 \everyMPtoPDFconversion=\toks28
 )
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
@@ -489,7 +504,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 101.
+Package hyperref Info: Link coloring OFF on input line 141.
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
@@ -499,11 +514,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count301
+\c@section@level=\count304
 )
-LaTeX Info: Redefining \ref on input line 101.
-LaTeX Info: Redefining \pageref on input line 101.
-LaTeX Info: Redefining \nameref on input line 101.
+LaTeX Info: Redefining \ref on input line 141.
+LaTeX Info: Redefining \pageref on input line 141.
+LaTeX Info: Redefining \nameref on input line 141.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -539,170 +554,179 @@ LaTeX Info: Redefining \nameref on input line 101.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-03.
+43.
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-03.
+43.
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-103.
+143.
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-103.
+143.
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 103.
+(Font)              <12> on input line 143.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 103.
+(Font)              <8> on input line 143.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 103.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 103
+(Font)              <6> on input line 143.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 143
 .
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 103
+LaTeX Font Info:    Trying to load font information for U+msb on input line 143
 .
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) (final_paper.toc)
-\tf@toc=\write3
-\openout3 = `final_paper.toc'.
+\tf@toc=\write4
+\openout4 = `final_paper.toc'.
 
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-22.
+62.
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
 
 {C:/Users/woshi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 132.
+(Font)              <10> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 132.
+(Font)              <7> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 132.
-[2]
-<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=44, 459.7175pt x 315.1775p
+(Font)              <5> on input line 172.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+77.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+178.
+(C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [2] [3]
+<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=50, 459.7175pt x 315.1775p
 t>
 File: final_paper_files/figure-latex/gg-oz-plot-1.pdf Graphic file (type pdf)
 <use final_paper_files/figure-latex/gg-oz-plot-1.pdf>
 Package pdftex.def Info: final_paper_files/figure-latex/gg-oz-plot-1.pdf  used 
-on input line 271.
+on input line 399.
 (pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 278.
+(amsmath)                 on input line 406.
 
-[3] [4 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 311--314
+[4] [5 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 439--442
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--314
+Underfull \hbox (badness 10000) in paragraph at lines 439--442
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 315--318
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 443--446
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 315--318
+Underfull \hbox (badness 10000) in paragraph at lines 443--446
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 319--322
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 447--450
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 319--322
+Underfull \hbox (badness 10000) in paragraph at lines 447--450
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 323--326
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 451--454
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--326
+Underfull \hbox (badness 10000) in paragraph at lines 451--454
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 327--330
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 455--458
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--330
+Underfull \hbox (badness 10000) in paragraph at lines 455--458
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 331--334
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 459--462
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--334
+Underfull \hbox (badness 10000) in paragraph at lines 459--462
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 335--338
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 463--466
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--338
+Underfull \hbox (badness 10000) in paragraph at lines 463--466
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 339--342
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 467--470
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 339--342
+Underfull \hbox (badness 10000) in paragraph at lines 467--470
 
  []
 
-[5] (final_paper.aux) ) 
+[6] (final_paper.aux) ) 
 Here is how much of TeX's memory you used:
- 12829 strings out of 479325
- 193490 string characters out of 2856661
- 535654 words of memory out of 3000000
- 29934 multiletter control sequences out of 15000+600000
- 460196 words of font info for 113 fonts, out of 8000000 for 9000
+ 13391 strings out of 479325
+ 202137 string characters out of 2856661
+ 560580 words of memory out of 3000000
+ 30472 multiletter control sequences out of 15000+600000
+ 461069 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,6n,88p,969b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 85i,6n,88p,969b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/
 dvips/lm/lm-ec.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
 s/lm/lm-mathsy.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
 s/lm/lm-mathit.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
 s/lm/lm-mathex.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
-s/lm/lm-rm.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm
-/lm-ts1.enc}<C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+s/lm/lm-ts1.enc}{C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/l
+m/lm-rm.enc}<C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
 /lmbx10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
 /lmbx12.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
 /lmex10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
@@ -713,10 +737,11 @@ mr12.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
 r17.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr
 i10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
 y10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
-y7.pfb>
-Output written on final_paper.pdf (5 pages, 207233 bytes).
+y7.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt
+10.pfb>
+Output written on final_paper.pdf (6 pages, 240922 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
+ 173 PDF objects out of 1000 (max. 8388607)
+ 33 named destinations out of 1000 (max. 500000)
  32830 words of extra memory for PDF output out of 35830 (max. 10000000)
 
