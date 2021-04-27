@@ -60,7 +60,7 @@ data_reduced <- data[,1:50]
 
 #change to numeric
 for(i in 1:50){
-  data_reduced[,i]=as.numeric(data_reduced[,i])-1
+  data_reduced[,i]=as.numeric(unlist(data_reduced[,i]))-1
 }
 
 pos_keyed_vars <-  c('EXT1', 'EXT3', 'EXT5', 'EXT7', 'EXT9',
@@ -86,64 +86,54 @@ score_data <- data_reduced %>% mutate(
                                     OPN=rowSums(data_reduced[41:50])/10,
                                     AGR=rowSums(data_reduced[21:30])/10,
                                     CSN=rowSums(data_reduced[31:40])/10)
-score_data_final <- score_data_final<-na.omit(score_data[,51:55])
+score_data_final1<-na.omit(score_data[,51:55])
 
 ```
 
-
 ```{r}
-##############
-#function to show k means result 
-##############
-kmeans_plot <- function(data,k ){
-  centers <- kmeans(data, k)$centers
-  par(mfrow=c(k/2,2))
-  for(i in 1:k){
-    plot(x=1:5,centers[i,],ylim = c(0,5),main=paste("means vector",i))
-  }
-}
-
-
-```
-
-
-```{r}
-#plot
-kmeans_plot(score_data_final,6)
-
-```
-
-
-
-```{r}
-#normalcy check
-for(i in 1:5){
-  hist(score_data_final[,i])
-}
-
-```
-```{r}
-data.fa <- factanal(data_reduced, 5)
+score_data_final <- scale(score_data_final1)
+score_data_final<-as.data.frame(score_data_final)
+nrow(score_data_final)
 ```
 
 
 
 
 
+
+```{r}
+data = sample_n(score_data_final,10000)
+data = as.matrix(data)
+head(data)
+```
+
+
+#DO NOT TOUCH
+
 ```{r}
 
-data <- score_data_final[1:10000,]
-data_scale <- scale(data)
-dp <- DirichletProcessMvnormal(data_scale)
+dp <- DirichletProcessMvnormal(data)
 ?DirichletProcessMvnormal
-dp <- Fit(dp, 100)
+dp <- Fit(dp, 1000)
+saveRDS(dp, file = "DP_result.rds")
+```
+
+
+
+
+
+
+
+
+
+```{r}
 dp$numberClusters
 dp
 dp$mixingDistribution
 plot(dp)
 dp$clusterParameters$mu[,,1]
 par(mfrow=c(1,3))
-for(i in 1:3){
+for(i in 1:12){
  plot(x=1:5,dp$clusterParameters$mu[,,i],ylim = c(-3,3),main=paste("means vector",i)) 
 }
 dp$pointsPerCluster
@@ -158,112 +148,105 @@ dp$alpha
 
 
 
+
 ```{r}
-my_data <- readRDS("my_data.rds")
-my_data$clusterParameters
+
+my_data <- readRDS("DP_result.rds")
+my_data$numberClusters
+my_data$pointsPerCluster
+my_data$weights
+
 ```
 
 ```{r}
-data10000<-data_scale[1:10000,]
+data10000<-data[1:10000,]
 data10000 <- cbind(data10000, cluster = my_data$clusterLabels)
 ```
 
-
-
-
-
-
-
 ```{r}
-library(bayestestR)
-library("mvtnorm")
+Overlap<-matrix( 0,nrow = 9, ncol = 2)
 
+for(j in 1:my_data$numberClusters)
+{x <- rmvnorm(1000, my_data$clusterParameters$mu[,,j], my_data$clusterParameters$sig[,,j])
+temp<-c()
 
-
-x3 <- rmvnorm(1000, my_data$clusterParameters$mu[,,3], my_data$clusterParameters$sig[,,3])
-
-Overlap3<-c()
 for(i in 1:my_data$numberClusters)
-{ if (i==3 || i==7 || i==8||i==9)
-  {Overlap3[i]= 0
+{ if (i==j)
+  {temp[i]= 0
     next}
   
   else
  { y <- rmvnorm(1000, my_data$clusterParameters$mu[,,i], my_data$clusterParameters$sig[,,i])
 
-Overlap3[i]=overlap(x3, y)}}
-max(Overlap3)
-which.max(Overlap3)
-
-for(i in 1:10000)
-{if(data10000[i,6]==3)
-{data10000[i,6]<-1}
+temp[i]=overlap(x, y)}}
+Overlap[j,1]<-max(temp)
+Overlap[j,2]<-which.max(temp)
 }
 
 
-x7 <- rmvnorm(1000, my_data$clusterParameters$mu[,,7], my_data$clusterParameters$sig[,,7])
+Overlap
+```
 
-Overlap7<-c()
+
+Check overlap with other groups
+```{r}
+library("bayestestR")
+library("mvtnorm")
+
+x10 <- rmvnorm(1000, my_data$clusterParameters$mu[,,10], my_data$clusterParameters$sig[,,10])
+
+Overlap10<-c()
 for(i in 1:my_data$numberClusters)
-{ if (i==3 || i==7 || i==8||i==9)
+{ if ( i==10 || i==11||i==12 )
   {Overlap7[i]= 0
     next}
   
   else
  { y <- rmvnorm(1000, my_data$clusterParameters$mu[,,i], my_data$clusterParameters$sig[,,i])
 
-Overlap7[i]=overlap(x7, y)}}
-max(Overlap7)
-which.max(Overlap7)
-
-for(i in 1:10000)
-{if(data10000[i,6]==7)
-{data10000[i,6]<-5}
-}
+Overlap10[i]=overlap(x10, y)}}
+max(Overlap10)
+which.max(Overlap10)
 
 
-x8 <- rmvnorm(1000, my_data$clusterParameters$mu[,,7], my_data$clusterParameters$sig[,,7])
 
-Overlap8<-c()
+x11 <- rmvnorm(1000, my_data$clusterParameters$mu[,,11], my_data$clusterParameters$sig[,,11])
+
+Overlap11<-c()
 for(i in 1:my_data$numberClusters)
-{ if (i==3 || i==7 || i==8||i==9)
-  {Overlap8[i]= 0
+{ if ( i==10 || i==11||i==12)
+  {Overlap11[i]= 0
     next}
   
   else
  { y <- rmvnorm(1000, my_data$clusterParameters$mu[,,i], my_data$clusterParameters$sig[,,i])
 
-Overlap8[i]=overlap(x8, y)}}
-max(Overlap8)
-which.max(Overlap8)
-
-for(i in 1:10000)
-{if(data10000[i,6]==8)
-{data10000[i,6]<-5}
-}
+Overlap11[i]=overlap(x11, y)}}
+max(Overlap11)
+which.max(Overlap11)
 
 
-x9 <- rmvnorm(1000, my_data$clusterParameters$mu[,,7], my_data$clusterParameters$sig[,,7])
+x12 <- rmvnorm(1000, my_data$clusterParameters$mu[,,12], my_data$clusterParameters$sig[,,12])
 
-Overlap9<-c()
+Overlap12<-c()
 for(i in 1:my_data$numberClusters)
-{ if (i==3 || i==7 || i==8||i==9)
-  {Overlap9[i]= 0
+{ if ( i==10 || i==11||i==12)
+  {Overlap12[i]= 0
     next}
   
   else
  { y <- rmvnorm(1000, my_data$clusterParameters$mu[,,i], my_data$clusterParameters$sig[,,i])
 
-Overlap9[i]=overlap(x9, y)}}
-max(Overlap9)
-which.max(Overlap9)
+Overlap12[i]=overlap(x12, y)}}
+max(Overlap12)
+which.max(Overlap12)
 
-for(i in 1:10000)
-{if(data10000[i,6]==9)
-{data10000[i,6]<-5}
-}
 
 ```
+
+
+
+#Consider if we need to refit the normal model here---does it worth to recalculate the points for just 3 or 2 or 1 point?
 ```{r}
 library(Rfast)
 df <- as.data.frame(data10000)
@@ -298,6 +281,7 @@ p4=nrow(matrix4)/10000
 p5=nrow(matrix5)/10000
 
 
+
 ```
 
 
@@ -309,30 +293,52 @@ p5=nrow(matrix5)/10000
 
 
 ```{r}
-for(i in 1:9){
- plot(x=1:5,my_data$clusterParameters$mu[,,i],ylim = c(-3,3),main=paste("means vector",i)) 
-}
+
+ plot(x=1:5,r1$mu,ylim = c(-3,3),main=paste("means vector",1)) 
+ plot(x=1:5,r2$mu,ylim = c(-3,3),main=paste("means vector",2)) 
+  plot(x=1:5,r3$mu,ylim = c(-3,3),main=paste("means vector",3)) 
+   plot(x=1:5,r4$mu,ylim = c(-3,3),main=paste("means vector",4)) 
+    plot(x=1:5,r5$mu,ylim = c(-3,3),main=paste("means vector",5)) 
+    
 ```
 
 
-```{r}
-food <- read.csv("https://userpage.fu-berlin.de/soga/300/30100_data_sets/food-texture.csv",
-                 row.names = "X")
-str(food)
-food.fa <- factanal(food, factors = 2)
-```
+
+
+
 
 ```{r}
 
 library(mixAK)
-Prior <- list(priorK = "fixed", Kmax = 10)
-nMCMC <- c(burn=5000, keep=10000, thin=5, info=1000)
-fit_personality <- NMixMCMC(y0=score_data_final[1:10000,],prior=Prior,nMCMC=nMCMC)
+Prior <- list(priorK = "fixed", Kmax = 9)
+Mu=rbind(c(my_data$clusterParameters$mu[,,1]),c(my_data$clusterParameters$mu[,,2]),c(my_data$clusterParameters$mu[,,3]),c(my_data$clusterParameters$mu[,,4]),c(my_data$clusterParameters$mu[,,5]),my_data$clusterParameters$mu[,,6],my_data$clusterParameters$mu[,,7],my_data$clusterParameters$mu[,,8],my_data$clusterParameters$mu[,,9])
+Sig=mat_combined1 <- rbind(my_data$clusterParameters$sig[,,1], my_data$clusterParameters$sig[,,2 ],my_data$clusterParameters$sig[,,3 ],my_data$clusterParameters$sig[,,4 ],my_data$clusterParameters$sig[,,5 ],my_data$clusterParameters$sig[,,6 ],my_data$clusterParameters$sig[,,7 ],my_data$clusterParameters$sig[,,8 ],my_data$clusterParameters$sig[,,9 ]) 
+
+
+Init<-list(K=9, w=c(my_data$weights[1],my_data$weights[2],my_data$weights[3],my_data$weights[4],my_data$weights[5],my_data$weights[6],my_data$weights[7],my_data$weights[8],my_data$weights[9]),mu=Mu, Sigma=Sig)
+
+
+Matrix1=
+NMCMC <- c(burn=1000, keep=5000, thin=5, info=1000)
+
+fit_personality <- NMixMCMC(y0=score_data_final[0:20000,],prior=Prior,init=Init,nMCMC=NMCMC)
 
 ```
 ```{r}
+
 fit_personality[[1]]$poster.mean.w
+fit_personality[[1]]$poster.mean.mu
+fit_personality[[1]]$poster.mean.Sigma
 ```
+
+
+```{r}
+plot(fit_personality[[1]]$poster.mean.mu[2,],ylim = c(-2,2))
+plot(fit_personality[[1]]$poster.mean.mu[3,],ylim = c(-2,2))
+plot(fit_personality[[1]]$poster.mean.mu[4,],ylim = c(-2,2))
+plot(fit_personality[[1]]$poster.mean.mu[5,],ylim = c(-2,2))
+```
+
 
 ```{r}
 
