@@ -26,14 +26,21 @@ We adopt this two phase modeling due to expensive computational cost given the g
 
 # Data
 
-This dataset contains $1,015,342$ questionnaire answers collected through an interactive online personality test by Open Psychometrics from 2016 to 2018. The personality test was constructed with the "Big-Five Factor Markers" from the International Personality Item Pool, developed by Goldberg (1992). It consists of fifty items that the respondent must rate on how true they are about him/her on a five point scale where $1 =$ Disagree, $3=$ Neutral and $5=$ Agree. Responses to this test was recorded anonymously. More information about each question is included in the appendix.
+This dataset contains $1,015,342$ questionnaire answers collected through an interactive online personality test by Open Psychometrics from 2016 to 2018. The personality test was constructed with the "Big-Five Factor Markers" from the International Personality Item Pool, developed by Goldberg (1992). It consists of fifty items that the respondent must rate on how true they are about him/her on a five point scale from "Very Inaccurate", "Moderately Inaccurate", "Neither Inaccurate nor Accurate", "Moderately Accurate", and "Very Accurate". Responses to this test was recorded anonymously. More information about each question is included in the appendix.
 
 In this study we will analyze the data set and use a Bayesian unsupervised learning algorithm for clustering the participants.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE)
+```
 
 ```{r}
 library(dplyr)
 library(dirichletprocess)
 library(ggplot2)
+library(patchwork)
 ```
 
 ```{r}
@@ -42,7 +49,6 @@ data_raw = read.csv("data-final.csv", sep='\t', na.strings = "NULL")
 
 ```{r}
 data = data.frame(data_raw)
-options.display.max_columns = 150
 
 data <- data[ -c(51:107) ]
 data <- data[ -c(52:53) ]
@@ -78,10 +84,66 @@ ggplot(countries, aes(reorder(country, -n, sum), n, fill = country)) +
 ```
 We see that the vast majority of the participants are from the U.S. We might be exposed to selection bias.
 
+Among the $50$ items in the survey, some are positive (e.g. "I am the life of the party") while some are negative (e.g. "I don't talk a lot"). 
+
+For $+$ keyed items, the response "Very Inaccurate" is assigned a value of $1$, "Moderately Inaccurate" a value of $2$, "Neither Inaccurate nor Accurate" a $3$, "Moderately Accurate" a $4$, and "Very Accurate" a value of $5$.
+ 
+For $-$ keyed items, the response "Very Inaccurate" is assigned a value of $5$, "Moderately Inaccurate" a value of $4$, "Neither Inaccurate nor Accurate" a $3$, "Moderately Accurate" a $2$, and "Very Accurate" a value of $1$.
+ 
+Once numbers are assigned for all of the items in the scale, we will sum all the values to obtain a total scale score for each of the five personality traits.
+
+```{r}
+pos_keyed_vars <-  c('EXT1', 'EXT3', 'EXT5', 'EXT7', 'EXT9',
+                    'EST1', 'EST3', 'EST5', 'EST6', 'EST7', 
+                    'EST8', 'EST9', 'EST10',
+                    'AGR2', 'AGR4', 'AGR6', 'AGR8', 'AGR9', 'AGR10',
+                    'CSN1', 'CSN3', 'CSN5', 'CSN7', 'CSN9', 'CSN10', 
+                    'OPN1', 'OPN3', 'OPN5', 'OPN7', 'OPN8', 'OPN9', 
+                    'OPN10')
+neg_keyed_vars <-  c('EXT2', 'EXT4', 'EXT6', 'EXT8', 'EXT10',
+                    'EST2', 'EST4',
+                    'AGR1', 'AGR3', 'AGR5', 'AGR7', 
+                    'CSN2', 'CSN4', 'CSN6', 'CSN8', 
+                    'OPN2', 'OPN4', 'OPN6')
+```
+
+```{r}
+for(key in neg_keyed_vars){
+  data[key]=6-data[key]
+}
+```
+
+```{r}
+data <- data %>% mutate(
+  EXT=rowSums(data[1:10]),
+  EST=rowSums(data[11:20]),
+  AGR=rowSums(data[21:30]),
+  CSN=rowSums(data[31:40]),
+  OPN=rowSums(data[41:50]))
+score_data_final <- data[,52:56]
+```
+
+```{r, message = FALSE}
+traits = c('EXT', 'EST', 'AGR', 'CSN', 'OPN')
+trait_labels = c('Extroversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness')
+myplots <- list()
+for(i in 1:5){
+  p1 <- ggplot(score_data_final, aes(x= score_data_final[,i] ))+
+    geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+    theme_minimal()+
+    theme(axis.title.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank())+
+    labs(title= trait_labels[i])
+  print(p1)
+}
+```
+
+The distribution of "Extroversion'", "Neuroticism", and "Conscientiousness" looks pretty symmetric, but that of "Agreeableness" and "Openness" looks left-skewed. Since we will be approximating the distribution of trait scores as normal distributions, we should proceed with caution when analyzing these two traits.
+
 \textbf{MAY wanna put this in Appendix}
 
 The following items were presented on one page and each was rated on a five point scale using radio buttons. The order on page was was EXT1, AGR1, CSN1, EST1, OPN1, EXT2, etc.
-The scale was labeled $1=$ Disagree, $3=$ Neutral, $5=$Agree
 
 - EXT1	I am the life of the party.
 - EXT2	I don't talk a lot.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.4.27)  27 APR 2021 05:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.4.27)  28 APR 2021 03:08
 entering extended mode
 **./final_paper.tex
 (final_paper.tex
@@ -615,109 +615,135 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-178.
+185.
 (C:\Users\woshi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [2] [3]
-<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=50, 459.7175pt x 315.1775p
+) [2]
+<final_paper_files/figure-latex/unnamed-chunk-7-1.pdf, id=46, 459.7175pt x 308.
+15125pt>
+File: final_paper_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type p
+df)
+<use final_paper_files/figure-latex/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-7-1.pdf  
+used on input line 311.
+(pdftex.def)             Requested size: 459.74442pt x 308.16928pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--313
+[][]
+ []
+
+[3]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 341.
+[4 <./final_paper_files/figure-latex/unnamed-chunk-7-1.pdf>]
+<final_paper_files/figure-latex/unnamed-chunk-11-1.pdf, id=64, 448.67625pt x 30
+3.1325pt>
+File: final_paper_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type 
+pdf)
+<use final_paper_files/figure-latex/unnamed-chunk-11-1.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-11-1.pdf 
+ used on input line 380.
+(pdftex.def)             Requested size: 448.68199pt x 303.13638pt.
+[5 <./final_paper_files/figure-latex/unnamed-chunk-11-1.pdf>] [6]
+<final_paper_files/figure-latex/gg-oz-plot-1.pdf, id=80, 459.7175pt x 315.1775p
 t>
 File: final_paper_files/figure-latex/gg-oz-plot-1.pdf Graphic file (type pdf)
 <use final_paper_files/figure-latex/gg-oz-plot-1.pdf>
 Package pdftex.def Info: final_paper_files/figure-latex/gg-oz-plot-1.pdf  used 
-on input line 399.
+on input line 519.
 (pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 406.
+(amsmath)                 on input line 526.
 
-[4] [5 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 439--442
+[7 <./final_paper_files/figure-latex/gg-oz-plot-1.pdf>]
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 559--562
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--442
+Underfull \hbox (badness 10000) in paragraph at lines 559--562
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 443--446
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 563--566
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 443--446
+Underfull \hbox (badness 10000) in paragraph at lines 563--566
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 447--450
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 567--570
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--450
+Underfull \hbox (badness 10000) in paragraph at lines 567--570
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 451--454
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 571--574
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--454
+Underfull \hbox (badness 10000) in paragraph at lines 571--574
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 455--458
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 575--578
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--458
+Underfull \hbox (badness 10000) in paragraph at lines 575--578
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 459--462
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 579--582
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 459--462
+Underfull \hbox (badness 10000) in paragraph at lines 579--582
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 463--466
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 583--586
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 463--466
+Underfull \hbox (badness 10000) in paragraph at lines 583--586
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 467--470
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 587--590
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 467--470
+Underfull \hbox (badness 10000) in paragraph at lines 587--590
 
  []
 
-[6] (final_paper.aux) ) 
+[8] (final_paper.aux) ) 
 Here is how much of TeX's memory you used:
- 13391 strings out of 479325
- 202137 string characters out of 2856661
- 560580 words of memory out of 3000000
- 30472 multiletter control sequences out of 15000+600000
- 461069 words of font info for 118 fonts, out of 8000000 for 9000
+ 13411 strings out of 479325
+ 202891 string characters out of 2856661
+ 551580 words of memory out of 3000000
+ 30485 multiletter control sequences out of 15000+600000
+ 461470 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,6n,88p,969b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/enc/
@@ -737,11 +763,12 @@ mr12.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
 r17.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr
 i10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
 y10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lms
-y7.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt
+y7.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk
+10.pfb><C:/Users/woshi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt
 10.pfb>
-Output written on final_paper.pdf (6 pages, 240922 bytes).
+Output written on final_paper.pdf (8 pages, 282580 bytes).
 PDF statistics:
- 173 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 500000)
- 32830 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 203 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
+ 32840 words of extra memory for PDF output out of 35830 (max. 10000000)
 
