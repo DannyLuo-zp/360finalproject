@@ -156,11 +156,15 @@ dp$alpha
 
 
 
+```{r}
+my_data$labelsChain[[100]]
+```
 
 
 ```{r}
 my_data <- readRDS("my_data.rds")
-my_data$clusterParameters
+my_data$clusterLabels
+rgamma(1,2,4)
 ```
 
 ```{r}
@@ -264,6 +268,7 @@ for(i in 1:10000)
 }
 
 ```
+
 ```{r}
 library(Rfast)
 df <- as.data.frame(data10000)
@@ -315,6 +320,17 @@ for(i in 1:9){
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+## Test IGNORE
 ```{r}
 food <- read.csv("https://userpage.fu-berlin.de/soga/300/30100_data_sets/food-texture.csv",
                  row.names = "X")
