@@ -114,4 +114,8 @@ for(i in 1:4){
 
 
 
+```{r}
+my_data <- readRDS("my_data.rds")
+my_data$labelsChain[[100]]
+```
 
