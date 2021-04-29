@@ -7,8 +7,11 @@ output:
 bibliography: mybib.bib
 link-citations: yes
 csl: ieee.csl
+header-includes: 
+  - \def\bs{\boldsymbol}
 nocite: '@*'
 ---
+
 # Introduction
 
 The Five Factor Model (FFM) of personality is a model for personality assessment that has been widely studied and applied in the field of Psychology. [@FFM_intro] It proposes 5 domains across which one's personality could be characterized. They are Openness to Experience, Conscientiousness, Extraversion, Agreeableness and Neuroticism (or in abbreviation, OCEAN) respectively. 
@@ -41,10 +44,11 @@ library(dplyr)
 library(dirichletprocess)
 library(ggplot2)
 library(patchwork)
+library(gridExtra)
 ```
 
 ```{r}
-data_raw = read.csv("data-final.csv", sep='\t', na.strings = "NULL")
+data_raw = read.csv("../data-final.csv", sep='\t', na.strings = "NULL")
 ```
 
 ```{r}
@@ -53,18 +57,18 @@ data = data.frame(data_raw)
 data <- data[ -c(51:107) ]
 data <- data[ -c(52:53) ]
 
-print(nrow(data))
-head(data)
+#print(nrow(data))
+#head(data)
 ```
 
 ```{r}
-table(is.na(data))
+#table(is.na(data))
 ```
 It looks like there are 89150 missing values.
 
 ```{r}
 data <- na.omit(data)
-nrow(data)
+#nrow(data)
 ```
 After eliminating missing values, we have $1013558$ valid observations.
 
@@ -73,7 +77,7 @@ countries <- data %>% count(country)
 countries <- countries[countries$n>=5000,]
 ```
 
-```{r}
+```{r fig.cap="Number of participants in countries"}
 ggplot(countries, aes(reorder(country, -n, sum), n, fill = country)) +
   geom_bar(stat="identity", width = 0.8)+
   geom_text(aes(label=n), vjust=-0.3, size=2)+
@@ -123,25 +127,169 @@ data <- data %>% mutate(
 score_data_final <- data[,52:56]
 ```
 
-```{r, message = FALSE}
+```{r, fig.cap="Normalcy check"}
 traits = c('EXT', 'EST', 'AGR', 'CSN', 'OPN')
 trait_labels = c('Extroversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness')
 myplots <- list()
-for(i in 1:5){
-  p1 <- ggplot(score_data_final, aes(x= score_data_final[,i] ))+
-    geom_histogram(colour="black", fill="lightblue",binwidth=3)+
-    theme_minimal()+
-    theme(axis.title.x=element_blank(),
-        axis.ticks.x=element_blank(),
-        axis.title.y=element_blank())+
-    labs(title= trait_labels[i])
-  print(p1)
-}
+
+
+p1 <- ggplot(score_data_final, aes(x= score_data_final[,1] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[1])
+p2 <- ggplot(score_data_final, aes(x= score_data_final[,2] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[2])
+p3 <- ggplot(score_data_final, aes(x= score_data_final[,3] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[3])
+p4 <- ggplot(score_data_final, aes(x= score_data_final[,4] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[4])
+p5 <- ggplot(score_data_final, aes(x= score_data_final[,5] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[5])
+
+grid.arrange(p1,p2,p3,p4,p5, nrow = 2)
 ```
 
 The distribution of "Extroversion'", "Neuroticism", and "Conscientiousness" looks pretty symmetric, but that of "Agreeableness" and "Openness" looks left-skewed. Since we will be approximating the distribution of trait scores as normal distributions, we should proceed with caution when analyzing these two traits.
 
-\textbf{MAY wanna put this in Appendix}
+
+# Model
+
+## Nonparametric Learning for cluster size K
+
+We assume the score vector for each individual in the survey comes from a mixture Gaussian distribution with unknown number of components $K$ in the mixture. The normal assumption could be largely justified by the symmetric bell shape distribution of 3 dimensions in the personality data as shown in EDA. 
+
+To find the unknown number of components or cluster number $K$, we adopt a Dirichlet process Gaussian mixture model(DPGMM).It is a widely used clustering tool documented in literature.[@gorur_dirichlet_2010] The sampling model of DPGMM has the form below:
+$$
+\begin{aligned} 
+  y_i &\sim N(y|\bs{\theta_i}),\\
+  \bs{\theta_i} = \{\bs{\mu_i},\Sigma_i\} &\sim G,\\
+  G &\sim DP(\alpha, G_0)\\
+\end{aligned} 
+$$
+The process works by first drawing a distribution $G$ from Dirichlet Process DP with concentration paramter $\alpha$ and a base distirbution of $G_0$. $G_0$ is a joint distribution of Gaussian paramters $\bs{\mu},\Sigma$, which we assume all Gaussian mixture paramters come from. The hierachial process first draw a distribution $G$ from the DP, where $G=\sum^{\infty}_{K=0} \pi_k \delta_{\bs{\theta_k}}$. That is, we can understand G as $K \rightarrow \infty$ random discrete probability measure, where $\delta_{\bs{\theta_k}}$ is a point mass centered on $\bs{\theta_k}$.[@teh_dirichlet_2010]. A stick-breaking property construction of the DP process suggests that most probability mass is concentrated on a few values, that is, when $\bs{\theta_i}$ is being simulated from $G$, it will mostly likely take on only a few discrete values given appropriate concentration value $\alpha$ and those few values become our cluster parameters $\bs{\theta_i}$. This process is non-parametric, providing the key advantage of nonfixed cluster size. Thus the cluster size is fully learned from the data itself. We place the following priors on the paramters $\alpha$ and $G_0$:
+$$
+\begin{aligned} 
+  \alpha &\sim Gamma(a=2,b=4)\\
+  G_0(\bs{\mu},\Sigma) &\sim N(\bs{\mu}|\bs{\mu_0}=0,\Sigma_0)IW(\nu_0,\Phi_0)
+\end{aligned} 
+$$
+We chose a Gamma prior since the postive support matches that of $\alpha$, and $Gamma(2,4)$ gives us an expected value of $alpha=0.5$. A small $\alpha$ generally yields more concentrated distribution, thus less clusters as we would expect. Literature has reported a meaingful cluster size of 4 on the same personality data we used.[@gerlach_robust_2018]. For the base distribution, since the data is scaled, we will set the prior paramter $\mu_0$ to 0, $\nu_0$ to be 1 and $\Phi_0=I$ to represent a non-informative prior belief. Semi-conjugacy and full conditionals can be established for $G_0$ since we do not assume any dependency between mean and variance. For posterior sampling of $alpha$, we adopted the MCMC sampling scheme as described by West (1992). [@west_hyperparameter_1992] This scheme is used in r-package $DirichletProcess$ [@R-dirichletprocess]. Due to the complexity of the full sampling scheme, the full details and posteriors will not be discussed here at length. MCMC sampling shcemes return the following clusters. 
+
+
+## Iterative Gaussian mixture Model 
+
+We will use the posterior clusters as our prior to the Gaussian mixture model with fixed cluster size.The motivation is that since the DPGMM process is very costly, we will then "learn" the rest of the data using the fixed number of cluster size in DPGMM. This should be appropriate since we used 10k random samples that could be representative of the whole population profiles. The fixed $K$ mixture model can be described by the following:
+$$
+\begin{aligned} 
+  y_i|z_i=j &\sim N(\bs{\mu_j},\Sigma_j),\\
+  P(z_i=j)&=p_j,\\
+\end{aligned} 
+$$
+We assigned the following prior:
+$$
+\begin{aligned} 
+  (\bs{\mu_j},\Sigma_j) &\sim N(\bs{\mu_{0j},\Phi_j})\times Wishart (n, V)  \forall j=1,...,K ,\\
+  \bs{p}&\sim Dirichlet(\bs{\alpha}),
+\end{aligned} 
+$$
+where for each individual $i$, $z_i$ is a latent unobserved component membership variable indicating which component in the mixture it belongs to. We plug in the values of $(\bs{\mu_j},\Sigma_j)$ using cluster paramters we derive from DPGMM. $\alpha$ vector is also derived from the weights from DPGMM. 
+
+We inference on the posterior cluster paramters by MCMC, using the r package mixAK.[@R-mixAK] We initiate the chain using the same paramters we got from DPGMM in the last step for faster convergence.
+
+Since the methods error out when running larger set of data, we break down the rest of our data into chunks and iteratively ran the MCMC procedure, feeding the Maximum-A-Posterior estimation of last the MCMC chain into the prior of the next one. In that way, we are iteratively "learning" the population patterns. 
+
+
+
+
+# Results
+Posterior analyses from the fitted Bayesian model, and a translation of
+such findings into meaningful & understandable conclusions for the target audience
+(e.g., engineers, business managers, policy-makers, etc). See project rubric for
+details.
+
+
+# Conclusion
+
+
+
+
+
+A summary of key findings and potential impacts of your project.
+
+We assume the score vector for each individual in the survey comes from a mixture Gaussian distribution with unknown number of components $K$ in the mixture. The normal assumption could be largely justified by the symmetric bell shape distribution of 3 dimensions in the personality data as shown in EDA. 
+
+To find the unknown number of components or cluster number $K$, we adopt a Dirichlet process Gaussian mixture model(DPGMM).It is a widely used clustering tool documented in literature.[@gorur_dirichlet_2010] It has the form below:
+$$
+\begin{aligned} 
+  y_i &\sim N(y|\mathbf{\theta_i})\\
+  \theta_i &\sim N()
+\end{aligned} 
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation} 
+
+: Discussion & justification of the proposed Bayesian model framework
+(prior and sampling model). This discussion should elicit prior information on the
+problem, the data sources available, and relevant project goals. Any “downstream”
+uses of the model (e.g., for prediction, optimization, ranking) should be discussed
+in detail here. See project rubric for details.
+
+
+This is test for referencing equation. See equation \@ref(eq:binom)
+
+# References {-}
+
+<div id="refs"></div>
+
+# Appendix {-}
+
+## 1 Personality Test Questions / Comprehensive Data description.
 
 The following items were presented on one page and each was rated on a five point scale using radio buttons. The order on page was was EXT1, AGR1, CSN1, EST1, OPN1, EXT2, etc.
 
@@ -208,57 +356,4 @@ The time spent on each question is also recorded in milliseconds. These are the 
 - country     The country, determined by technical information (NOT ASKED AS A QUESTION)
 - lat_appx_lots_of_err    approximate latitude of user. determined by technical information, THIS IS NOT VERY ACCURATE. 
 - long_appx_lots_of_err   approximate longitude of user
-
-```{r gg-oz-plot, echo=FALSE,  message=FALSE,warning=FALSE,fig.cap = "Life expectancy from 1952 - 2007 for Australia. Life expentancy increases steadily except from 1962 to 1969. We can safely say that our life expectancy is higher than it has ever been!"}
-library(ggplot2)
-library(dplyr)
-library(gapminder)
-gapminder %>%
-  filter(country == "Australia") %>%
-  ggplot(aes(x = year,
-             y = lifeExp)) + 
-  geom_point()
-```
-
-
-
-
-# Model
-$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  (\#eq:binom)
-\end{equation} 
-
-: Discussion & justification of the proposed Bayesian model framework
-(prior and sampling model). This discussion should elicit prior information on the
-problem, the data sources available, and relevant project goals. Any “downstream”
-uses of the model (e.g., for prediction, optimization, ranking) should be discussed
-in detail here. See project rubric for details.
-
-
-This is test for referencing equation. See equation \@ref(eq:binom)
-
-# Results
-Posterior analyses from the fitted Bayesian model, and a translation of
-such findings into meaningful & understandable conclusions for the target audience
-(e.g., engineers, business managers, policy-makers, etc). See project rubric for
-details.
-
-
-# Conclusion
-
-
-
-
-
-A summary of key findings and potential impacts of your project.
-
-
-
-# References {-}
-
-<div id="refs"></div>
-
-# Appendix {-}
 
