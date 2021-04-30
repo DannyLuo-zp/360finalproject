@@ -181,7 +181,7 @@ my_data$labelsChain[[100]]
 
 ```{r}
 
-my_data <- readRDS("DP_result.rds")
+my_data <- readRDS("DP_result_updated.rds")
 my_data$numberClusters
 my_data$pointsPerCluster
 my_data$weights

@@ -11,7 +11,9 @@ output: pdf_document
 
 We assume the score vector for each individual in the survey comes from a mixture Gaussian distribution with unknown number of components $K$ in the mixture. The normal assumption could be largely justified by the symmetric bell shape distribution of 3 dimensions in the personality data as shown in EDA. 
 
-To find the unknown number of components or cluster number $K$, we adopt a Dirichlet process Gaussian mixture model(DPGMM).It is a widely used clustering tool documented in literature.[@gorur_dirichlet_2010] The sampling model of DPGMM has the form below:
+To find the unknown number of components or cluster number $K$, we adopt a Dirichlet process Gaussian mixture model(DPGMM).It is a widely used clustering tool documented in literature.[@gorur_dirichlet_2010] The key motivation behind our adoption of this model is that Dirichlet Process Gauassian mixture is non-parametric, in that it assumes a nonfixed number of clusters $K$. It has the following advantages: 1) it learns the number of clusters $K$ from the data. It is extremely convenient especially provided that we do not have strong belief of exact number of personality types underlying this population. 2) it eliminates the necessity of the model selection procedure if we were to use parametric models. If a parametric model is adopted, optimal number of clusters would have to be tested via different runs of model with vaired $K$ using criterion like BIC.[@gerlach_robust_2018] With DPGMM, the model itself returns the optimal "posterior" size. 
+
+The sampling model of DPGMM has the form below:
 $$
 \begin{aligned} 
   y_i &\sim N(y|\bs{\theta_i}),\\
@@ -19,19 +21,28 @@ $$
   G &\sim DP(\alpha, G_0)\\
 \end{aligned} 
 $$
-The process works by first drawing a distribution $G$ from Dirichlet Process DP with concentration paramter $\alpha$ and a base distirbution of $G_0$. $G_0$ is a joint distribution of Gaussian paramters $\bs{\mu},\Sigma$, which we assume all Gaussian mixture paramters come from. The hierachial process first draw a distribution $G$ from the DP, where $G=\sum^{\infty}_{K=0} \pi_k \delta_{\bs{\theta_k}}$. That is, we can understand G as $K \rightarrow \infty$ random discrete probability measure, where $\delta_{\bs{\theta_k}}$ is a point mass centered on $\bs{\theta_k}$.[@teh_dirichlet_2010]. A stick-breaking property construction of the DP process suggests that most probability mass is concentrated on a few values, that is, when $\bs{\theta_i}$ is being simulated from $G$, it will mostly likely take on only a few discrete values given appropriate concentration value $\alpha$ and those few values become our cluster parameters $\bs{\theta_i}$. This process is non-parametric, providing the key advantage of nonfixed cluster size. Thus the cluster size is fully learned from the data itself. We place the following priors on the paramters $\alpha$ and $G_0$:
+
+To give a brief overview, the process works by first drawing a distribution $G$ from Dirichlet Process DP with concentration paramter $\alpha$ and a base distirbution of $G_0$. $G_0$ is a joint distribution of Gaussian paramters $\bs{\mu},\Sigma$, which we assume all Gaussian mixture paramters come from. The hierachial process first draw a distribution $G$ from the DP, where $G=\sum^{\infty}_{K=0} \pi_k \delta_{\bs{\theta_k}}$. That is, we can understand G as $K \rightarrow \infty$ random discrete probability measure, where $\delta_{\bs{\theta_k}}$ is a point mass centered on $\bs{\theta_k}$.[@teh_dirichlet_2010]. A stick-breaking property construction of the DP process suggests that most probability mass is concentrated on a few values, that is, when $\bs{\theta_i}$ is being simulated from $G$, it will mostly likely take on only a few discrete values given appropriate concentration value $\alpha$ and those few values become our cluster parameters $\bs{\theta_i}$. 
+
+We place the following priors on the paramters $\alpha$ and $G_0$:
 $$
 \begin{aligned} 
   \alpha &\sim Gamma(a=2,b=4)\\
   G_0(\bs{\mu},\Sigma) &\sim N(\bs{\mu}|\bs{\mu_0}=0,\Sigma_0)IW(\nu_0,\Phi_0)
 \end{aligned} 
 $$
-We chose a Gamma prior since the postive support matches that of $\alpha$, and $Gamma(2,4)$ gives us an expected value of $alpha=0.5$. A small $\alpha$ generally yields more concentrated distribution, thus less clusters as we would expect. Literature has reported a meaingful cluster size of 4 on the same personality data we used.[@gerlach_robust_2018]. For the base distribution, since the data is scaled, we will set the prior paramter $\mu_0$ to 0, $\nu_0$ to be 1 and $\Phi_0=I$ to represent a non-informative prior belief. Semi-conjugacy and full conditionals can be established for $G_0$ since we do not assume any dependency between mean and variance. For posterior sampling of $alpha$, we adopted the MCMC sampling scheme as described by West (1992). [@west_hyperparameter_1992] This scheme is used in r-package $DirichletProcess$ [@R-dirichletprocess]. Due to the complexity of the full sampling scheme, the full details and posteriors will not be discussed here at length. MCMC sampling shcemes return the following clusters. 
 
+Our prior choices are justified as follows. We chose a Gamma prior since the postive support matches that of $\alpha$, and $Gamma(2,4)$ gives us an expected value of $alpha=0.5$. A small $\alpha$ generally yields more concentrated distribution, thus less clusters as we would expect. Literature has reported a meaingful cluster size of 4 on the same personality data we used.[@gerlach_robust_2018] so it makes sense for us to set a small $alpha$ as prior. For the base distribution, since the data is scaled, we will set the prior paramter $\mu_0$ to 0, $\nu_0$ to be 1 and $\Phi_0=I$ to represent a non-informative prior belief. 
 
-### Iterative Gaussian mixture Model 
+Semi-conjugacy and full conditionals can be established for $G_0$ since we do not assume any dependency between mean and variance. For posterior sampling of $alpha$, we adopted the MCMC sampling scheme as described by West (1992). [@west_hyperparameter_1992] This scheme is used in r-package $DirichletProcess$ [@R-dirichletprocess]. Due to the complexity of the full sampling scheme and the output specification of the package $DirichletProcess$, the full details and posteriors will not be discussed here at length. 
 
-We will use the posterior clusters as our prior to the Gaussian mixture model with fixed cluster size.The motivation is that since the DPGMM process is very costly, we will then "learn" the rest of the data using the fixed number of cluster size in DPGMM. This should be appropriate since we used 10k random samples that could be representative of the whole population profiles. The fixed $K$ mixture model can be described by the following:
+Since the process is very computationally costly, we chose to run the model with a random sample of 10,000 individuals out of over 1,000,000 data in total The posterior output returns 13 clusters. Since we are only interested the major personality types, we choose to only retain clusters with size proportion (out of 10,000) greater than $\epsilon = 0.1$. This yields 5 remaining distinct clusters. 
+
+### Gaussian mixture Model 
+
+To allow our model to capture more data in population, we will use the posterior five clusters to specify a prior to the Gaussian mixture model with fixed cluster size $K$ and run a paramteric Gaussian mixture model on 200,000 individuals. The motivation is that since this process is less costly, we can run on more data to further update the "belief" on personality types and thus achieve more model generatlization. The key assumption we implicitly made here is that DPGMM on random 10,000 individuals is representative of the whole population so that at least $K$ = 5 is fairly accurate assumption to feed into paramteric Gaussian mixture. Note that it does not have the same "accuracy" requirment on cluster parameters since Bayesian learning will keep updating them using 200,000 data while $K$ is fixed throughout this phase. This process is justified since it inherently uses the "Bayesian" philosophy of using new information to update prior belief coming from limited data.
+
+The fixed $K$ mixture model can be described by the following:
 $$
 \begin{aligned} 
   y_i|z_i=j &\sim N(\bs{\mu_j},\Sigma_j),\\
@@ -45,11 +56,8 @@ $$
   \bs{p}&\sim Dirichlet(\bs{\alpha}),
 \end{aligned} 
 $$
-where for each individual $i$, $z_i$ is a latent unobserved component membership variable indicating which component in the mixture it belongs to. We plug in the values of $(\bs{\mu_j},\Sigma_j)$ using cluster paramters we derive from DPGMM. $\alpha$ vector is also derived from the weights from DPGMM. 
+where for each individual $i$, $z_i$ is a latent unobserved component membership variable indicating which component in the mixture it belongs to. 
 
-We inference on the posterior cluster paramters by MCMC, using the r package mixAK.[@R-mixAK] We initiate the chain using the same paramters we got from DPGMM in the last step for faster convergence.
-
-Since the methods error out when running larger set of data, we break down the rest of our data into chunks and iteratively ran the MCMC procedure, feeding the Maximum-A-Posterior estimation of last the MCMC chain into the prior of the next one. In that way, we are iteratively "learning" the population patterns. 
-
+We inference on the posterior cluster paramters by MCMC, using the r package mixAK.[@R-mixAK], which does exert some additional prior constraints. We plug in the values of $(\bs{\mu_j},\Sigma_j)$ using cluster paramters we derive from DPGMM. However, $\alpha$ vector is required to be uniform. Thus we place a small $\bs{\alpha} = \bs{1}$, representing weak prior belief, allowing the model to learn the posterior weighted towards data itself. mixAK also allows a uniform parameter $V$ and places a hyper Gamma priors on $V$. (See our elicitation of hyper prior in Appendix)
 
 

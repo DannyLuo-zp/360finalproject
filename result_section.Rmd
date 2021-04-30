@@ -1,0 +1,86 @@
+---
+title: "result_section"
+author: "Danny Luo"
+date: "4/29/2021"
+header-includes: 
+  - \def\bs{\boldsymbol}
+output: pdf_document
+---
+
+# Results
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE)
+```
+
+```{r}
+# Result from DP
+my_data <- readRDS("DP_result.rds")
+my_data$clusterParameters$mu[,,2]
+par(mfrow=c(4,4))
+
+# selection threshold
+epsilon=0.10
+S=10000
+
+# retain cluster if only size >= epsilon * S
+cluster_final_indx <- c()
+for(i in 1:my_data$numberClusters){
+  if(my_data$pointsPerCluster[i]>=epsilon*S){
+    cluster_final_indx <- c(cluster_final_indx,i)
+  }
+}
+
+# Plot cluster means 
+par(mfrow=c(2,3))
+for(i in cluster_final_indx){
+  plot(x=1:5,y=my_data$clusterParameters$mu[,,i],ylim=c(-3,3),
+       xlab = "subtraits",ylab="score", 
+       main=paste(" mean for cluster",i),
+       sub=paste(round(my_data$pointsPerCluster[i]/S*100,2),"%total population"),
+       xaxt="n")
+  axis(side = 1, at = 1:5,labels = c("E","N","A","C","O"))
+}
+
+```
+
+
+```{r mixAK-clusters, fig.cap="Mean vectors of 5 identified clusters of personality types",fig.align="center"}
+#read result of MCMC
+post_data <- readRDS("Posterior_Final.rds")
+  
+#order by percentage populatoin
+order_indx <- c(3,4,5,1,2)
+
+cols <- c("red","blue","salmon3","orange","purple")
+
+#texts map to graph in order: 4,5,1,2,3
+texts <- c("overcontrolled","undercontrolled","average","role model","d")
+
+# Plot cluster means 
+par(mfrow=c(2,3))
+for(i in order_indx){
+  plot(x=1:5,y=post_data$poster.mean.mu[i,],ylim=c(-2,2),
+       xlab = "subtraits",ylab="z-score", 
+       main=,
+       sub=paste(round(post_data$poster.mean.w[i]*100,2),"% of total population"),
+       col=cols[i],
+       bg=cols[i],
+       pch=22,
+       xaxt="n")
+  text(x=3,y=1.5,label=texts[i],col=cols[i],pos=3,offset = 0.5,cex=1.3)
+  abline(h=0, col="black",lwd=1, lty=2)
+  axis(side = 1, at = 1:5,labels = c("E","N","A","C","O"))
+}
+
+#'Extroversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness
+#1: "average I type"
+#2: "role model", N is below, other above
+#6: "undercontrolled", all score below average, least agreeable
+#7: "Overcontrolled", high N, low E.
+#8: "average II type"  all within one standard deviation
+```
+
+
+

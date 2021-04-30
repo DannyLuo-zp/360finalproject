@@ -7,7 +7,6 @@ library(fitdistrplus)
 ```
 
 ```{r}
-
 my_data <- readRDS("DP_result.rds")
 ```
 
