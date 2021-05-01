@@ -117,9 +117,7 @@ $$
 where for each individual $i$, $z_i$ is a latent unobserved component membership variable indicating which component in the mixture it belongs to. 
 
 We inference on the posterior cluster paramters by MCMC sampling, using the r package mixAK.[@R-mixAK], which does exert some additional prior constraints. We plug in the values of $(\bs{\mu_j},\Sigma_j)$ using cluster paramters we derive from DPGMM. However, $\alpha$ vector is required to be uniform. Thus we place a small $\bs{\alpha} = \bs{1}$, representing weak prior belief, allowing the model to learn the posterior weighted towards data itself. mixAK also allows a uniform parameter $V$ and places a hyper Gamma priors on $V$. (See our elicitation of hyper prior in Appendix) Our MCMC estimator is obtained by simply taking the cluster parameters' mean across all iterations.  
-```{r}
-post_data$poster.mean.mu
-```
+
 
 # Results
 ```{r mixAK-clusters, fig.cap="Mean vectors of 5 identified clusters of personality types",fig.align="center"}
@@ -132,7 +130,7 @@ order_indx <- c(3,4,5,1,2)
 cols <- c("red","blue","salmon3","orange","purple")
 
 #texts map to graph in order: 4,5,1,2,3
-texts <- c("overcontrolled","undercontrolled","average","role model","d")
+texts <- c("overcontrolled","undercontrolled","average","role model","Resilient")
 
 # Plot cluster means 
 par(mfrow=c(2,3))
@@ -158,34 +156,26 @@ for(i in order_indx){
 #8: "average II type"  all within one standard deviation
 ```
 
+Our analysis yields five clusters each with distinct and interpretable personality types, and we plotted the mean vector of the Gaussian distribution of each type. (See Figure \@ref(fig:mixAK-clusters) The first and most heavily weighted (with a weight of 44.49%) cluster has the personality score very close to average in all subtraits category, thus representing an average type of personality. The rest of the clusters follows more interesting patterns. We denote the personality type represented by the yellow color as "role model" since it has the highest score of "Agreeableness" and "Openness" and above average in the rest of three subtraits, all socially desirable traits except for Neuroticism (it is only slightly above average so it still supports our classification nicely). 
 
-### f
+In fact, three replicable personality types has been under consistent research focus and appeared widely in Literature since 2004, and they are "Resisilient","Overcontrolled",and "Undercontrolled". [@donnellan2010resilient][@gerlach_robust_2018]Their documented association from Literature with Big Five model are as listed in Table \@ref(tab:ARC). [@donnellan2010resilient]Comparing the literature finding and our cluster model, high identifiability of our clusters with minor refinement could be observed. The purple, red and blue cluster in Figure \@ref(fig:mixAK-clusters) can be nicely identified with "Resislient","Overcontrolled" and "Undercontrolled" respectively by matching the score distribution with documented characteristics in Table \@ref(tab:ARC). The match is not exact, however, as we can see in the "Undercontrolled" group, Conscientiousness is not significantly low below the average. However, differences as such can show the unique characteristics of this dataset at hands and keep adding to the continued debate over replicability and robustness of the ARC-type classification.
+```{r ARC, tab.align="center",tab.cap="Literature findings of Big Five trait proﬁles correlation with the three replicable personality types"}
+dt <- mtcars[1:5, 1:6]
 
-Our analysis yields five clusters each with distinct and interpretable personality types, and we plotted the mean vector of the Gaussian distribution of each type. (See Figure \@ref(fig:mixAK-clusters) The first and most heavily weighted (with a weight of 44.49%) cluster has the personality score very close to average in all subtraits category, thus representing an average type of personality. The rest of the clusters follows more interesting patterns. We denote the personality type represented by the yellow color as "role model" since it has the highest score of "Agreeableness" and "Openness" and above average in the rest of three subtraits, all socially desirable traits except for Neuroticism (it is only slightly above average so it still supports our classification nicely). we denote the personality type reprsented by the purple cluster to be "reserved role model" in that it 
-dafdfad
-dfd
+dt <- data.frame(Resilient=c("high","-","high","low","-"),Overcontrolled=c("low","-","-","high","-"),UnderControlled=c("-","Low","Low","-","-"))
+rownames(dt) <- c("Extraversion","Agreeableness","Conscientiousness","Neuroticism","Openness")
+library(dplyr)
+library(kableExtra)
+dt%>%
+  kbl() %>%
+  kable_styling()
+```
 
-adfadf
 # Conclusion
 
+This paper provides an alternative clustering methodology to uncover latent personality types using Big Five personality data. Nonparametric learning using Dirichlet Process Gaussian Mixture model was used to decide the optimal cluster size while subsequent Gaussian mixture model was used to update and refine the cluster parameters. It provides a valuable methodology to conduct Bayesian unsupervised clustering. 
 
-
-
-
-$$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  (\#eq:binom)
-\end{equation} 
-
-: Discussion & justification of the proposed Bayesian model framework
-(prior and sampling model). This discussion should elicit prior information on the
-problem, the data sources available, and relevant project goals. Any “downstream”
-uses of the model (e.g., for prediction, optimization, ranking) should be discussed
-in detail here. See project rubric for details.
-
-
-This is test for referencing equation. See equation \@ref(eq:binom)
+Our results matched personality types on literature with some nuanced differences.
 
 # References {-}
 
