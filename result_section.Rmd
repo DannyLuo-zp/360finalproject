@@ -81,6 +81,12 @@ for(i in order_indx){
 #7: "Overcontrolled", high N, low E.
 #8: "average II type"  all within one standard deviation
 ```
+```{r}
+library(gtools)
+rdirichlet(1,c(my_data$pointsPerCluster,2))
+
+my_data$mixingDistribution
+```
 
 
 

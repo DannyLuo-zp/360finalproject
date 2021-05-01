@@ -31,12 +31,29 @@ $$
   G_0(\bs{\mu},\Sigma) &\sim N(\bs{\mu}|\bs{\mu_0}=0,\Sigma_0)IW(\nu_0,\Phi_0)
 \end{aligned} 
 $$
+```{r}
+prior_val <- 0.5*log(10000)
+```
 
-Our prior choices are justified as follows. We chose a Gamma prior since the postive support matches that of $\alpha$, and $Gamma(2,4)$ gives us an expected value of $alpha=0.5$. A small $\alpha$ generally yields more concentrated distribution, thus less clusters as we would expect. Literature has reported a meaingful cluster size of 4 on the same personality data we used.[@gerlach_robust_2018] so it makes sense for us to set a small $alpha$ as prior. For the base distribution, since the data is scaled, we will set the prior paramter $\mu_0$ to 0, $\nu_0$ to be 1 and $\Phi_0=I$ to represent a non-informative prior belief. 
+Our prior choices are justified as follows. We chose a Gamma prior since the postive support matches that of $\alpha$, and $Gamma(2,4)$ gives us an expected value of $alpha=0.5$. Literature has shown that the prior expeceted number of clusters can be expressed using concentration paramter $alpah$ as follows: $\alpha log(N)=0.5\,times log(10000)=4.6$.[@raykov2016simple]This matches the reporting of a meaingful cluster size of 4 on the same personality data we used in a recent study,[@gerlach_robust_2018] so it makes sense for us to set the $Gamma(2,4)$ as prior for $\alpha$. For the base distribution, since the data is scaled, we will set the prior paramter $\mu_0$ to 0, $\nu_0$ to be 1 and $\Phi_0=I$ to represent a non-informative prior belief. 
 
 Semi-conjugacy and full conditionals can be established for $G_0$ since we do not assume any dependency between mean and variance. For posterior sampling of $alpha$, we adopted the MCMC sampling scheme as described by West (1992). [@west_hyperparameter_1992] This scheme is used in r-package $DirichletProcess$ [@R-dirichletprocess]. Due to the complexity of the full sampling scheme and the output specification of the package $DirichletProcess$, the full details and posteriors will not be discussed here at length. 
 
-Since the process is very computationally costly, we chose to run the model with a random sample of 10,000 individuals out of over 1,000,000 data in total The posterior output returns 13 clusters. Since we are only interested the major personality types, we choose to only retain clusters with size proportion (out of 10,000) greater than $\epsilon = 0.1$. This yields 5 remaining distinct clusters. 
+```{r}
+cluster_size_list <- readRDS("cluster_size_MCMC.rds")
+mean_estimator <- mean(cluster_size_list)
+```
+
+Since the process is very computationally costly, we chose to run the model with a random sample of 10,000 individuals out of over 1,000,000 data in total. The chain included 1000 iterations. We provided the summary statistics from the chain as follows. For each iteration, we estimated the number of clusters through 1) use posterior draw of $\alpha$ to perform stick breaking process in getting exact number of clusters (they can be quite large, i.e. 300-400 total clusters).(we used $PosteriorClusters$ method) [@R-dirichletprocess] 2) since we are only interested the major personality types, we choose to only retain clusters with size proportion (out of 10,000) greater than $\epsilon = 0.1$. This truncated the number of clusters to a magnitude of less than 10. We used this truncated "number of clusters" to derive a mean estimate of cluster number. (The traceplot of truncated number of clusters is in Fig.) The mean estimator is $r mean_estimator$. We rounded up to $K=5$.We picked the last iteration for our posterior estimate of cluster paramters $\bs{\theta_i}$ due to the complication of taking the average over cluster paramters of different size. 
+
+
+```{r,fig.align="center",fig.cap="Traceplot for number of cluster",out.width = "70%"}
+#plot MCMC 
+
+plot(1:1000,cluster_size_list,type="l",
+     ylab=" truncated cluster size",xlab="Iterature")
+```
+
 
 ### Gaussian mixture Model 
 
@@ -58,6 +75,6 @@ $$
 $$
 where for each individual $i$, $z_i$ is a latent unobserved component membership variable indicating which component in the mixture it belongs to. 
 
-We inference on the posterior cluster paramters by MCMC, using the r package mixAK.[@R-mixAK], which does exert some additional prior constraints. We plug in the values of $(\bs{\mu_j},\Sigma_j)$ using cluster paramters we derive from DPGMM. However, $\alpha$ vector is required to be uniform. Thus we place a small $\bs{\alpha} = \bs{1}$, representing weak prior belief, allowing the model to learn the posterior weighted towards data itself. mixAK also allows a uniform parameter $V$ and places a hyper Gamma priors on $V$. (See our elicitation of hyper prior in Appendix)
+We inference on the posterior cluster paramters by MCMC sampling, using the r package mixAK.[@R-mixAK], which does exert some additional prior constraints. We plug in the values of $(\bs{\mu_j},\Sigma_j)$ using cluster paramters we derive from DPGMM. However, $\alpha$ vector is required to be uniform. Thus we place a small $\bs{\alpha} = \bs{1}$, representing weak prior belief, allowing the model to learn the posterior weighted towards data itself. mixAK also allows a uniform parameter $V$ and places a hyper Gamma priors on $V$. (See our elicitation of hyper prior in Appendix) Our MCMC estimator is obtained by simply taking the cluster parameters' mean across all iterations.  
 
 

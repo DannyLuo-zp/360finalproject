@@ -6,8 +6,9 @@ output: html_document
 ---
 
 ```{r}
+
 # Result from DP
-my_data <- readRDS("DP_result.rds")
+my_data <- readRDS("DP_result_updated.rds")
 my_data$clusterParameters$mu[,,2]
 par(mfrow=c(4,4))
 
@@ -44,9 +45,71 @@ for(i in cluster_final_indx){
 ```
 
 ```{r}
-mean(my_data$alphaChain)
+#for each iter, call Posterior Clusters, select cluster size greater than 10%, compile into a list
+num_clusters_list <- c()
+i=1
+for(i in 1:1000){
+  post_clust <- PosteriorClusters(my_data,i)
+  
+  valid_indx <- c()
+  for(j in 1:length(post_clust$weights)){
+    if(post_clust$weights[j]>0.1){
+      valid_indx <- c(valid_indx,j)
+    }
+  }
+  num_clusters_list[i]=length(valid_indx);
+  
+}
 
-my_data$
+```
+
+```{r}
+#Save MCMC
+saveRDS(num_clusters_list, file = "cluster_size_MCMC.rds")
+
+```
+
+
+```{r}
+library(dirichletprocess)
+post_clust <- PosteriorClusters(my_data)
+
+sum(post_clust$weights>0.01)
+
+valid_indx <- c()
+for(i in 1:length(post_clust$weights)){
+  if(post_clust$weights[i]>0.1){
+    valid_indx <- c(valid_indx,i)
+    
+  }
+}
+m <- c()
+for(i in valid_indx){
+  m <- rbind(m,post_clust$params[[1]][,,i])
+}
+m[1,]
+
+# Plot cluster means 
+par(mfrow=c(2,4))
+for(i in 1:5){
+  plot(x=1:5,y=m[i,],ylim=c(-3,3),
+       xlab = "subtraits",ylab="score", 
+       main=paste(" mean for cluster",i),
+       sub=paste(round(post_clust$weights[valid_indx[i]]*100,2),"%total population"),
+       xaxt="n")
+  axis(side = 1, at = 1:5,labels = c("E","N","A","C","O"))
+}
+
+
+```
+
+
+```{r}
+S=1000
+length(my_data$alphaChain) 
+plot(1:S,my_data$alphaChain,type="l")
+my_data$alpha
+my_data$alphaChain[1000]
 ```
 
 
@@ -148,7 +211,7 @@ fit_personality <- NMixMCMC(y0=sample_n(score_data_final,200000),prior=Prior,ini
 ```{r}
 #read result
 post_data <- readRDS("Posterior_Final.rds")
-  
+
 # Plot cluster means 
 par(mfrow=c(2,3))
 for(i in 1:5){

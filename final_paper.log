@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  29 APR 2021 16:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.25)  1 MAY 2021 14:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -489,73 +489,133 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
 
 (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./final_paper.toc
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 4.
 )
-\tf@toc=\write4
-\openout4 = `final_paper.toc'.
-
-[1
-
-{/Users/zepingluo/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 9
-6.
+2.
 (/Users/zepingluo/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<final_paper_files/figure-latex/unnamed-chunk-7-1.pdf, id=72, 469.755pt x 325.2
-15pt>
-File: final_paper_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type p
-df)
-<use final_paper_files/figure-latex/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-7-1.pdf  
-used on input line 114.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 102.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 102.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 102.
+[1
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--116
-[][]
- []
-
-[2]
-<final_paper_files/figure-latex/unnamed-chunk-11-1.pdf, id=82, 469.755pt x 325.
+{/Users/zepingluo/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+] [2]
+<final_paper_files/figure-latex/unnamed-chunk-3-1.pdf, id=105, 469.755pt x 325.
 215pt>
-File: final_paper_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type 
-pdf)
-<use final_paper_files/figure-latex/unnamed-chunk-11-1.pdf>
-Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-11-1.pdf 
- used on input line 127.
+File: final_paper_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type p
+df)
+<use final_paper_files/figure-latex/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-3-1.pdf  
+used on input line 147.
+(pdftex.def)             Requested size: 328.82626pt x 227.64894pt.
+[3 <./final_paper_files/figure-latex/unnamed-chunk-3-1.pdf>]
+<final_paper_files/figure-latex/mixAK-clusters-1.pdf, id=122, 469.755pt x 325.2
+15pt>
+File: final_paper_files/figure-latex/mixAK-clusters-1.pdf Graphic file (type pd
+f)
+<use final_paper_files/figure-latex/mixAK-clusters-1.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/mixAK-clusters-1.pdf  u
+sed on input line 182.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[3 <./final_paper_files/figure-latex/unnamed-chunk-7-1.pdf>] [4 <./final_paper_
-files/figure-latex/unnamed-chunk-11-1.pdf>] [5]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 204.
+(amsmath)                 on input line 192.
 
-[6]
-Underfull \hbox (badness 1237) in paragraph at lines 253--255
-[][]\T1/lmr/m/n/10 [11] ``Big five per-son-al-ity test. Open-source psy-cho-met
+[4] [5 <./final_paper_files/figure-latex/mixAK-clusters-1.pdf>]
+Underfull \hbox (badness 1237) in paragraph at lines 250--252
+[][]\T1/lmr/m/n/10 [14] ``Big five per-son-al-ity test. Open-source psy-cho-met
 -rics project,'' Aug. 02, 2019. []$https : / /
  []
 
-[7] [8] (./final_paper.aux)
+<final_paper_files/figure-latex/unnamed-chunk-9-1.pdf, id=152, 469.755pt x 325.
+215pt>
+File: final_paper_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type p
+df)
+<use final_paper_files/figure-latex/unnamed-chunk-9-1.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-9-1.pdf  
+used on input line 265.
+(pdftex.def)             Requested size: 328.82626pt x 227.64894pt.
+<final_paper_files/figure-latex/unnamed-chunk-13-1.pdf, id=153, 469.755pt x 325
+.215pt>
+File: final_paper_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type 
+pdf)
+<use final_paper_files/figure-latex/unnamed-chunk-13-1.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-13-1.pdf 
+ used on input line 277.
+(pdftex.def)             Requested size: 328.82626pt x 227.64894pt.
+[6] [7 <./final_paper_files/figure-latex/unnamed-chunk-9-1.pdf> <./final_paper_
+files/figure-latex/unnamed-chunk-13-1.pdf>]
+<final_paper_files/figure-latex/unnamed-chunk-15-1.pdf, id=192, 433.62pt x 722.
+7pt>
+File: final_paper_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type 
+pdf)
+<use final_paper_files/figure-latex/unnamed-chunk-15-1.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-15-1.pdf 
+ used on input line 308.
+(pdftex.def)             Requested size: 328.84004pt x 548.06673pt.
+<final_paper_files/figure-latex/unnamed-chunk-15-2.pdf, id=193, 433.62pt x 722.
+7pt>
+File: final_paper_files/figure-latex/unnamed-chunk-15-2.pdf Graphic file (type 
+pdf)
+<use final_paper_files/figure-latex/unnamed-chunk-15-2.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-15-2.pdf 
+ used on input line 316.
+(pdftex.def)             Requested size: 328.84004pt x 548.06673pt.
+<final_paper_files/figure-latex/unnamed-chunk-15-3.pdf, id=194, 433.62pt x 722.
+7pt>
+File: final_paper_files/figure-latex/unnamed-chunk-15-3.pdf Graphic file (type 
+pdf)
+<use final_paper_files/figure-latex/unnamed-chunk-15-3.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-15-3.pdf 
+ used on input line 324.
+(pdftex.def)             Requested size: 328.84004pt x 548.06673pt.
+<final_paper_files/figure-latex/unnamed-chunk-15-4.pdf, id=195, 433.62pt x 722.
+7pt>
+File: final_paper_files/figure-latex/unnamed-chunk-15-4.pdf Graphic file (type 
+pdf)
+<use final_paper_files/figure-latex/unnamed-chunk-15-4.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-15-4.pdf 
+ used on input line 332.
+(pdftex.def)             Requested size: 328.84004pt x 548.06673pt.
+<final_paper_files/figure-latex/unnamed-chunk-15-5.pdf, id=196, 433.62pt x 722.
+7pt>
+File: final_paper_files/figure-latex/unnamed-chunk-15-5.pdf Graphic file (type 
+pdf)
+<use final_paper_files/figure-latex/unnamed-chunk-15-5.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-15-5.pdf 
+ used on input line 340.
+(pdftex.def)             Requested size: 328.84004pt x 548.06673pt.
+<final_paper_files/figure-latex/unnamed-chunk-16-1.pdf, id=197, 433.62pt x 722.
+7pt>
+File: final_paper_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (type 
+pdf)
+<use final_paper_files/figure-latex/unnamed-chunk-16-1.pdf>
+Package pdftex.def Info: final_paper_files/figure-latex/unnamed-chunk-16-1.pdf 
+ used on input line 349.
+(pdftex.def)             Requested size: 328.84004pt x 548.06673pt.
+[8] [9 <./final_paper_files/figure-latex/unnamed-chunk-15-1.pdf>] [10 <./final_
+paper_files/figure-latex/unnamed-chunk-15-2.pdf>] [11 <./final_paper_files/figu
+re-latex/unnamed-chunk-15-3.pdf>] [12 <./final_paper_files/figure-latex/unnamed
+-chunk-15-4.pdf>] [13 <./final_paper_files/figure-latex/unnamed-chunk-15-5.pdf>
+] [14 <./final_paper_files/figure-latex/unnamed-chunk-16-1.pdf>] [15] (./final_
+paper.aux)
 Package rerunfilecheck Info: File `final_paper.out' has not changed.
-(rerunfilecheck)             Checksum: ED99EB8E2B3055E136C1FD2CDCBE15E9;1476.
+(rerunfilecheck)             Checksum: 79D09C910030F952B7A6D8EBCBEBE89B;2271.
  ) 
 Here is how much of TeX's memory you used:
- 9757 strings out of 480962
- 143844 string characters out of 5906513
- 448723 words of memory out of 5000000
- 26745 multiletter control sequences out of 15000+600000
- 470105 words of font info for 78 fonts, out of 8000000 for 9000
+ 9847 strings out of 480962
+ 147553 string characters out of 5906513
+ 450596 words of memory out of 5000000
+ 26807 multiletter control sequences out of 15000+600000
+ 461137 words of font info for 75 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 71i,11n,74p,1313b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,11n,74p,1251b,389s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/U
 sers/zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/
 zepingluo/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/z
@@ -578,10 +638,10 @@ eX/texmf-dist/fonts/type1/public/lm/lmr7.pfb></Users/zepingluo/Library/TinyTeX/
 texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/zepingluo/Library/TinyTeX/t
 exmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/zepingluo/Library/TinyTeX/te
 xmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on final_paper.pdf (8 pages, 266425 bytes).
+Output written on final_paper.pdf (15 pages, 1034292 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 346 PDF objects out of 1000 (max. 8388607)
+ 290 compressed objects within 3 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 163 words of extra memory for PDF output out of 10000 (max. 10000000)
 
