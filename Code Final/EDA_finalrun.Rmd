@@ -1,0 +1,307 @@
+---
+title: "EDA"
+author: "Danny Luo"
+date: "4/18/2021"
+output: pdf_document
+---
+```{r}
+library(dplyr)
+library(dirichletprocess)
+library(ggplot2)
+library(bayestestR)
+library(mvtnorm)
+```
+
+
+
+```{r}
+###model proposal
+
+# x_i | z_i=j ~  multivariate gaussian mixture (mu_j,sigma_j)   i=1,..,n
+# mu_j,sigma_j ~ Normal-InvGamma for j = 1,...,k    
+# z_i ~ categorical (k category, prob vector p)  for i=1,..,n
+# p ~ Dirichlet(\alpha)  
+
+#Interested in:  joint_posterior (p,z, {mu_j,sig_j}^k )  using Gibbs Sampler
+
+#packages 
+
+
+
+#x_i would be of dimension 5 (originally 50)
+#Gaussian assumption?
+#more sophisticatd models different Bayesian clustering
+#choices of distance functions. sum of square
+
+
+
+#z vector of size 1 million
+#At each iteration, we need to sample z_i for i=1,...,n
+#thin data due to computation cost?
+
+
+#choose value k? 
+
+
+#k-mean as prior?
+
+
+
+
+```
+
+```{r}
+data_raw = read.csv("data-final.csv", sep='\t', na.strings = "NULL")
+```
+
+```{r}
+data_raw
+```
+
+
+
+```{r}
+data = data.frame(data_raw)
+
+data <- data[ -c(51:107) ]
+data <- data[ -c(52:53) ]
+
+print(nrow(data))
+head(data)
+data <- na.omit(data)
+nrow(data)
+```
+
+```{r}
+data <- na.omit(data)
+nrow(data)
+```
+```{r}
+pos_keyed_vars <-  c('EXT1', 'EXT3', 'EXT5', 'EXT7', 'EXT9',
+                    'EST1', 'EST3', 'EST5', 'EST6', 'EST7', 
+                    'EST8', 'EST9', 'EST10',
+                    'AGR2', 'AGR4', 'AGR6', 'AGR8', 'AGR9', 'AGR10',
+                    'CSN1', 'CSN3', 'CSN5', 'CSN7', 'CSN9', 'CSN10', 
+                    'OPN1', 'OPN3', 'OPN5', 'OPN7', 'OPN8', 'OPN9', 
+                    'OPN10')
+neg_keyed_vars <-  c('EXT2', 'EXT4', 'EXT6', 'EXT8', 'EXT10',
+                    'EST2', 'EST4',
+                    'AGR1', 'AGR3', 'AGR5', 'AGR7', 
+                    'CSN2', 'CSN4', 'CSN6', 'CSN8', 
+                    'OPN2', 'OPN4', 'OPN6')
+```
+
+```{r}
+for(key in neg_keyed_vars){
+  data[key]=6-data[key]
+}
+```
+
+```{r}
+data <- data %>% mutate(
+  EXT=rowSums(data[1:10]),
+  EST=rowSums(data[11:20]),
+  AGR=rowSums(data[21:30]),
+  CSN=rowSums(data[31:40]),
+  OPN=rowSums(data[41:50]))
+score_data_final <- data[,52:56]
+```
+
+```{r, message = FALSE}
+traits = c('EXT', 'EST', 'AGR', 'CSN', 'OPN')
+trait_labels = c('Extroversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness')
+myplots <- list()
+for(i in 1:5){
+  p1 <- ggplot(score_data_final, aes(x= score_data_final[,i] ))+
+    geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+    theme_minimal()+
+    theme(axis.title.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank())+
+    labs(title= trait_labels[i])
+  print(p1)
+}
+```
+
+
+```{r}
+score_data_final <- scale(score_data_final)
+score_data_final<-as.data.frame(score_data_final)
+
+saveRDS(score_data_final, file = "Score_final.rds")
+
+for(i in 1:5){
+  p1 <- ggplot(score_data_final, aes(x= score_data_final[,i] ))+
+    geom_histogram(colour="black", fill="lightblue",binwidth=0.5)+
+    theme_minimal()+
+    theme(axis.title.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank())+
+    labs(title= trait_labels[i])
+  print(p1)
+}
+```
+
+```{r}
+data_sample = sample_n(score_data_final,1000)
+data_sample = as.matrix(data_sample)
+head(data_sample)
+```
+
+
+#DO NOT TOUCH
+
+```{r}
+
+dp <- DirichletProcessMvnormal(data_sample)
+?DirichletProcessMvnormal
+dp <- Fit(dp, 1000)
+saveRDS(dp, file = "DP_result_1000.rds")
+```
+
+
+
+
+
+
+
+
+
+```{r}
+dp$numberClusters
+dp
+dp$mixingDistribution
+plot(dp)
+dp$clusterParameters$mu[,,1]
+par(mfrow=c(1,3))
+for(i in 1:12){
+ plot(x=1:5,dp$clusterParameters$mu[,,i],ylim = c(-3,3),main=paste("means vector",i)) 
+}
+dp$pointsPerCluster
+dp$mixingDistribution$distribution
+dp$alpha
+dp$clusterParameters$sig
+```
+
+
+
+```{r}
+my_data <- readRDS("DP_result.rds")
+postClusters <- PosteriorClusters(my_data)
+
+my_data$clusterParameters
+
+
+postClusters$weights
+postClusters$params
+
+
+```
+
+
+
+
+
+
+
+```{r}
+# Result from DP
+
+my_data$clusterParameters$mu[,,2]
+par(mfrow=c(4,4))
+
+# selection threshold
+epsilon=0.10
+S=10000
+
+# retain cluster if only size >= epsilon * S
+cluster_final_indx <- c()
+for(i in 1:my_data$numberClusters){
+  if(my_data$pointsPerCluster[i]>=epsilon*S){
+    cluster_final_indx <- c(cluster_final_indx,i)
+  }
+}
+
+# Plot cluster means 
+par(mfrow=c(2,4))
+for(i in cluster_final_indx){
+  plot(x=1:5,y=my_data$clusterParameters$mu[,,i],ylim=c(-3,3),
+       xlab = "subtraits",ylab="score", 
+       main=paste(" mean for cluster",i),
+       sub=paste(round(my_data$pointsPerCluster[i]/S*100,2),"%total population"),
+       xaxt="n")
+  axis(side = 1, at = 1:5,labels = c("E","N","A","C","O"))
+}
+```
+
+
+```{r}
+library(fitdistrplus)
+
+g1_samples <- c()
+g2_samples <- c()
+g3_samples <- c()
+g4_samples <- c()
+g5_samples <- c()
+
+for(i in 1:1000){
+  matrix =cov( sample_n(score_data_final,1000))
+  g1_samples[i] <- 1/matrix[1,1]
+  g2_samples[i] <- 1/matrix[2,2]
+  g3_samples[i] <- 1/matrix[3,3]
+  g4_samples[i] <- 1/matrix[4,4]
+  g5_samples[i] <- 1/matrix[5,5]
+}
+
+gamma_fit1<-fitdist(g1_samples,distr = "gamma", method="mle")
+gamma_fit2<-fitdist(g2_samples,distr = "gamma", method="mle")
+gamma_fit3<-fitdist(g3_samples,distr = "gamma", method="mle")
+gamma_fit4<-fitdist(g4_samples,distr = "gamma", method="mle")
+gamma_fit5<-fitdist(g5_samples,distr = "gamma", method="mle")
+
+G <- c(gamma_fit1$estimate[1],gamma_fit2$estimate[1],gamma_fit3$estimate[1],gamma_fit4$estimate[1],gamma_fit5$estimate[1])
+H <- c(gamma_fit1$estimate[2],gamma_fit2$estimate[2],gamma_fit3$estimate[2],gamma_fit4$estimate[2],gamma_fit5$estimate[2])
+```
+
+
+
+
+```{r}
+library(mixAK)
+Mu=rbind(c(my_data$clusterParameters$mu[,,1]),c(my_data$clusterParameters$mu[,,2]),my_data$clusterParameters$mu[,,6],my_data$clusterParameters$mu[,,7],my_data$clusterParameters$mu[,,8])
+
+Sig=mat_combined1 <- rbind(my_data$clusterParameters$sig[,,1], my_data$clusterParameters$sig[,,2 ],my_data$clusterParameters$sig[,,6 ],my_data$clusterParameters$sig[,,7 ],my_data$clusterParameters$sig[,,8 ]) 
+
+g<-c(g1_samples)
+
+Init<-list(K=5, w=c(my_data$weights[1],my_data$weights[2],my_data$weights[6],my_data$weights[7],my_data$weights[8]),mu=Mu, Sigma=Sig)
+
+NMCMC <- c(burn=1000, keep=5000, thin=5, info=1000)
+
+Prior <- list(priorK = "fixed", Kmax = 5 ,priormuQ="independentC",xi=Mu,D=Sig,g=G,h=H)
+
+fit_personality <- NMixMCMC(y0=sample_n(score_data_final,200000),prior=Prior,init=Init,nMCMC=NMCMC)
+```
+
+```{r}
+saveRDS(fit_personality[[1]], file = "Posterior_Final.rds")
+
+fit_personality[[1]]$poster.mean.mu
+```
+
+```{r}
+par(mfrow=c(2,4))
+for(i in 1:5)
+{ plot(x=1:5,fit_personality[[1]]$poster.mean.mu[i,],ylim = c(-3,3),
+  xlab = "subtraits",ylab="score", 
+       main=paste(" mean for cluster",i),
+      
+       xaxt="n")
+  axis(side = 1, at = 1:5,labels = c("E","N","A","C","O"))
+}
+
+
+```
+
+
+

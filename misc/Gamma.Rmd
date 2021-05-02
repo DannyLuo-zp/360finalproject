@@ -1,0 +1,148 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(fitdistrplus)
+```
+
+```{r}
+my_data <- readRDS("DP_result.rds")
+```
+
+
+
+```{r}
+sig1<-c()
+j<-1
+for(i in 1:1000)
+{for(k in 1:5)
+{sig1[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,1]
+j=j+1}
+}
+```
+
+```{r}
+my_data$clusterParametersChain[[1]]$sig
+```
+
+```{r}
+gamma_sig1<-fitdist(sig1,distr = "gamma", method="mle")
+summary(gamma_sig1)
+plot(gamma_sig1)
+```
+```{r}
+sig2<-c()
+j<-1
+for(i in 1:1000)
+  if(dim(my_data$clusterParametersChain[[i]]$sig)[3]>=2)
+{for(k in 1:5)
+{sig2[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,2]
+j=j+1}
+}
+gamma_sig2<-fitdist(sig2,distr = "gamma", method="mle")
+summary(gamma_sig2)
+plot(gamma_sig2)
+
+
+sig3<-c()
+j<-1
+for(i in 1:1000)
+  if(dim(my_data$clusterParametersChain[[i]]$sig)[3]>=3)
+{for(k in 1:5)
+{sig3[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,3]
+j=j+1}
+}
+gamma_sig3<-fitdist(sig3,distr = "gamma", method="mle")
+summary(gamma_sig3)
+plot(gamma_sig3)
+
+
+sig4<-c()
+j<-1
+for(i in 1:1000)
+  if(dim(my_data$clusterParametersChain[[i]]$sig)[3]>=4)
+{for(k in 1:5)
+{sig4[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,4]
+j=j+1}
+}
+gamma_sig4<-fitdist(sig4,distr = "gamma", method="mle")
+summary(gamma_sig4)
+plot(gamma_sig4)
+
+
+sig5<-c()
+j<-1
+for(i in 1:1000)
+  if(dim(my_data$clusterParametersChain[[i]]$sig)[3]>=5)
+{for(k in 1:5)
+{sig5[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,5]
+j=j+1}
+}
+gamma_sig5<-fitdist(sig5,distr = "gamma", method="mle")
+summary(gamma_sig5)
+plot(gamma_sig5)
+
+
+
+
+sig6<-c()
+j<-1
+for(i in 1:1000)
+  if(dim(my_data$clusterParametersChain[[i]]$sig)[3]>=6)
+{for(k in 1:5)
+{sig6[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,6]
+j=j+1}
+}
+gamma_sig6<-fitdist(sig6,distr = "gamma", method="mle")
+summary(gamma_sig6)
+plot(gamma_sig6)
+
+
+
+
+sig7<-c()
+j<-1
+for(i in 1:1000)
+  if(dim(my_data$clusterParametersChain[[i]]$sig)[3]>=7)
+{for(k in 1:5)
+{sig7[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,7]
+j=j+1}
+}
+gamma_sig7<-fitdist(sig7,distr = "gamma", method="mle")
+summary(gamma_sig7)
+plot(gamma_sig7)
+
+
+sig8<-c()
+j<-1
+for(i in 1:1000)
+  if(dim(my_data$clusterParametersChain[[i]]$sig)[3]>=8)
+{for(k in 1:5)
+{sig8[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,8]
+j=j+1}
+}
+gamma_sig8<-fitdist(sig8,distr = "gamma", method="mle")
+summary(gamma_sig8)
+plot(gamma_sig8)
+
+
+
+sig9<-c()
+j<-1
+for(i in 1:1000)
+  if(dim(my_data$clusterParametersChain[[i]]$sig)[3]>=9)
+{for(k in 1:5)
+{sig9[j]<-my_data$clusterParametersChain[[i]]$sig[k,k,9]
+j=j+1}
+}
+gamma_sig9<-fitdist(sig9,distr = "gamma", method="mle")
+summary(gamma_sig9)
+plot(gamma_sig9)
+
+
+
+
+
+
+```

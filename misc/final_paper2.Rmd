@@ -1,0 +1,545 @@
+---
+title: "Bayesian Unsupervised Clustering Method For Uncovering Latent Personality Types "
+author: "Danny Luo, Boxuan Li, and Nianli Peng "
+date: "4/24/2021"
+output:
+  bookdown::pdf_document2:
+    toc: false
+bibliography: mybib.bib
+link-citations: yes
+csl: ieee.csl
+header-includes: 
+  - \def\bs{\boldsymbol}
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE)
+```
+
+# Introduction
+
+The Five Factor Model (FFM) of personality is a model for personality assessment which has been widely studied and applied in the field of Psychology [@FFM_intro].The model proposes 5 domains across which one's personality could be characterized---Openness to Experience, Conscientiousness, Extraversion, Agreeableness and Neuroticism, or in abbreviation, OCEAN, respectively. 
+
+While FFM presents a viable framework to evaluate individual personality's scores on these five traits, it does not identify any personality type. A fuller utilization of FFM data usually means analyzing in depth the interaction between each dimension or moving a step further in classifying individuals into homogeneous personality profiles that could be interpretable under FFM [@merz_latent_2011]. Identifying the latent personality types will be of tremendous psychometric values, since It will not only reveal correlations between each dimension of personality traits, but will also present us a fuller picture of compositions of human personalities. An ideal latent personality classification would also yield a simple univariate measure of individual personality, which could be used in causal inference and prediction widely in the field of psychology and behavioral science. 
+
+Recent literature have attempted with various techniques to approach this clustering tasks to identify personality types from FFM, including Latent Profile Analysis, Gaussian Mixture Model combined with Factor Analysis [@merz_latent_2011][@gerlach_robust_2018]. This project will add on to this line of inquiry with two main objectives: 1) to develop an efficient Bayesian method to uncover latent personality in the Big Five dataset and 2) to compare cluster findings with existing literature on personality types.
+
+We propose an Bayesian unsupervised clustering algorithm that leverages a two-fold modeling structure:
+
+- A non-parametric Dirichlet process Gaussian mixture model (DPGMM) to decide the optimal number of clusters and their respective subpopulation parameters using a small portion of data
+- Use the optimal cluster number and the subpopulation parameters generated from DPGMM as a prior to generate the Gaussian mixture model based on a large dataset
+
+We adopt this two phase modeling due to expensive computational cost given the gigantic dataset and the costly nature of Dirichlet process model. The final output would yield a clustering of the individuals into different latent personalities type that is highly interpretable using FFM framework.
+
+# Data
+
+The dataset contains $1,015,342$ questionnaire answers collected through an interactive online personality test by Open Psychometrics from 2016 to 2018. The personality test was constructed with the "Big-Five Factor Markers" from the International Personality Item Pool, developed by Goldberg (1992)[@dataset][@kaggle]. It consists of fifty items that a respondent must rate on about how accurate the statement describes him/her, based on a five point scale from "Very Inaccurate", "Moderately Inaccurate", "Neither Inaccurate nor Accurate", "Moderately Accurate", and "Very Accurate". Responses to this test was recorded anonymously. (See Appendix \@ref(question-list) for a detailed list of individual questions)
+
+After eliminating 89150 missing values, we have a total of $1013558$ valid observations. We see that the vast majority of the participants are from the U.S (See Appendix \@ref(EDA-country)), which suggests the cross-cultural generalizability of our results might be limited.
+
+Among the $50$ questions in the survey, some are positively-keyed ($+$) (e.g. "I am the life of the party") and some are negatively-keyed ($-$) (e.g. "I don't talk a lot"). For $+$ keyed items, the response "Very Inaccurate" is assigned a value of $1$, "Moderately Inaccurate" a value of $2$, "Neither Inaccurate nor Accurate" a $3$, "Moderately Accurate" a $4$, and "Very Accurate" a value of $5$. For $-$ keyed items, the response "Very Inaccurate" is assigned a value of $5$, "Moderately Inaccurate" a value of $4$, "Neither Inaccurate nor Accurate" a $3$, "Moderately Accurate" a $2$, and "Very Accurate" a value of $1$. Based on the keys, We assigned numbers for all the responses and obtain a total scale score for each of the five personality traits for each respondent. 
+ 
+We find that the distribution of "Extroversion'", "Neuroticism", and "Conscientiousness" looks pretty symmetric, but that of "Agreeableness" and "Openness" looks left-skewed (Appendix \@ref(normal)). Since we will be approximating the distribution of trait scores as normal distributions, we should proceed with caution when analyzing these two traits. 
+
+As the methods we employed, Dirichlet Process and Gaussian Mixture Model are popular techniques widely used and implemented, we used the Dirichletprocess and MixAk package rather than implementing by our own code [@R-dirichletprocess] [@R-mixAK].   
+
+# Model
+
+## Nonparametric Learning for cluster size K
+
+We assume the score vector for each individual in the survey comes from a mixture Gaussian distribution with unknown number of components $K$ in the mixture. The normal assumption could be largely justified by the symmetric bell shape distribution of 3 dimensions in the personality data as shown in Appendix \@ref(normal).
+
+To find the unknown number of components or cluster number $K$, we adopt a Dirichlet process Gaussian mixture model (DPGMM), a widely used clustering tool documented in literature [@gorur_dirichlet_2010]. We adopt this model since the Dirichlet Process Gaussian mixture is non-parametric, by which it assumes a unfixed number of clusters $K$. The DPGMM model has the following advantages: 1) it could determine the number of clusters $K$ from the data, which is conveniently flexible especially provided that we do not have a strong belief of exact number of personality types underlying this population 2) it eliminates the necessity of model selection procedures if we were to use parametric models. If a parametric model is adopted, optimal number of clusters would have to be tested via different runs of model with varied $K$ using criterion like BIC [@gerlach_robust_2018]. With DPGMM, we can infer the optimal cluster number from the posterior. 
+
+The sampling model of DPGMM has the form below:
+$$
+\begin{aligned} 
+  y_i &\sim N(y|\bs{\theta_i}),\\ \bs{\theta_i} = \{\bs{\mu_i},\Sigma_i\} &\sim G,\\G &\sim DP(\alpha, G_0)\\
+\end{aligned} 
+$$
+
+To give a brief overview, the process first draws a distribution $G$ from Dirichlet Process DP with concentration parameter $\alpha$ and a base distribution of $G_0$. $G_0$ is a joint distribution of Gaussian parameters $\bs{\mu},\Sigma$, from which we assume all Gaussian mixture parameters are drawn. The hierarchical process first draws a distribution $G$ from the Dirichlet process (DP), where $G=\sum^{\infty}_{K=0} \pi_k \delta_{\bs{\theta_k}}$. That is, we can view G as $K \rightarrow \infty$ random discrete probability measure, where $\delta_{\bs{\theta_k}}$ is a point mass centered on $\bs{\theta_k}$ [@teh_dirichlet_2010]. A "stick-breaking" construction of the DP process suggests that most probability mass is concentrated on a few values so that when $\bs{\theta_i}$ is being simulated from $G$, it will mostly likely take on only a finite discrete values given appropriate concentration value $\alpha$ and those few values become our cluster parameters $\bs{\theta_i}$. 
+
+We place the following priors on the parameters $\alpha$ and $G_0$:
+$$
+\begin{aligned} 
+  \alpha &\sim Gamma(a=2,b=4)\\
+  G_0(\bs{\mu},\Sigma) &\sim N(\bs{\mu}|\bs{\mu_0}=0,\Sigma_0)IW(\nu_0,\Phi_0)
+\end{aligned} 
+$$
+```{r}
+prior_val <- 0.5*log(10000)
+```
+
+Our prior choices are justified as follows. We chose a Gamma prior since it has a positive support that matches $\alpha$, and we determined the parameters $Gamma(2,4)$ so the expected value $\alpha=0.5$. Literature has shown that the prior expected number of clusters can be expressed using concentration parameter $\alpha$ as $\alpha log(N)$ [@raykov2016simple]. In our case, it is evaluated as `r prior_val`, which roughly matches the conclusion of a meaningful cluster size 4 on the same personality data we used in a recent study [@gerlach_robust_2018]. Lastly, we place a semi-conjugate Normal-InverseWishart prior on $G_0$ since we do not assume additional constraints on any dependency between mean and variance. This model choice is apparent since a draw from $G_0$ is a cluster parameter $\{\bs{\mu_i},\Sigma_i\}$. We set the prior parameter $\mu_0$ to 0, $\nu_0$ to be 1 for the base distribution as the data is scaled, and $\Phi_0=I$ to represent a non-informative prior belief.
+
+For posterior sampling of $\alpha$, we used the MCMC sampling scheme as described by West (1992) , and uses r-package $DirichletProcess$ [@R-dirichletprocess] that applies this scheme [@west_hyperparameter_1992]. Due to the complexity of the full sampling scheme and the output specification of the package $DirichletProcess$, the full details and posteriors will not be discussed here at length. 
+
+```{r}
+cluster_size_list <- readRDS("cluster_size_MCMC.rds")
+mean_estimator <- mean(cluster_size_list[400:1000])
+```
+
+Since the process is very computationally costly, we chose to run the model using a random sample of 10,000 individuals out of over 1,000,000 data to obtain an optimal cluster number and the corresponding cluster parameters, and used the information to run a less costly MCMC for Gaussian mixture model with fixed number of clusters $K$. The MCMC chain for the Dirichlet process included 1000 iterations. To obtain an MCMC estimator of $K$ from the chain, we proceed as follows:
+
+- first use posterior draw of $\alpha$ to perform stick breaking process in getting exact number of clusters (which can be quite large, i.e. 300-400 total clusters), details of implementation could be found in the R documentation of $PosteriorClusters$ method [@R-dirichletprocess] 
+- as we are only interested the major personality types, we choose to only retain clusters with size proportion (out of 10,000) greater than $\epsilon = 0.1$. 
+
+After removing the clusters with a few elements, We truncated the number of clusters to less than 10. We used this truncated "number of clusters" to derive a mean estimate of cluster number. (The traceplot of truncated number of clusters is in Fig \@ref(fig:size-traceplot)) As it appears to converge after 400 iterations, we used a burn-in of 400 iterations and then calculated the mean estimator to be `r mean_estimator`. We rounded to $K=5$ and picked the last iteration for our posterior estimate of cluster parameters $\bs{\theta_i}$ due to the complication of taking the average over cluster parameters of various size. 
+
+```{r size-traceplot,fig.align="center",fig.cap="Traceplot of truncated number of cluster",out.width="50%"}
+#plot MCMC 
+
+plot(1:1000,cluster_size_list,type="l",
+     ylab=" truncated number of clusters",xlab="Iteration")
+```
+
+
+## Gaussian mixture Model 
+
+
+After processing the results of the Dirichlet Process, we concluded that $K=5$ is the optimal clusters for major personality types. We also get the corresponding weights, means and covariance matrices  for these 5 major clusters (see Appendix \@ref(dpresults) ). We then used $K=5$ and their corresponding parameters as the prior belief to fit the Gaussian mixture model with fixed cluster size, based on the assumption that DPGMM on random 10,000 individuals is large enough to represent the population. As the MCMC process with known number of clusters is less costly, we could calculate the posterior based on a much larger set of data to update our "belief" on personality types. Hence, the posterior will allow for better inference on the population. This process inherently uses the "Bayesian" philosophy of using new information to update prior belief coming from limited data. The traceplot shows that after burning in 1,000 iterations, the MCMC chain starts to mix well. Hence, we chose the burnin to be 1,000 and run a total of 6,000 rounds. However, running over 1 million data is still time-consuming. Due to the limitations of hardware, we randomly sample a total of 200,000 samples to run a parametric Gaussian mixture model.  
+
+
+
+The fixed $K$ mixture model can be described by the following:
+$$
+\begin{aligned} 
+  y_i|z_i=j &\sim N(\bs{\mu_j},\Sigma_j),\\
+  P(z_i=j)&=p_j,\\
+\end{aligned} 
+$$
+We assigned the following prior:
+$$
+\begin{aligned} 
+  (\bs{\mu_j},\Sigma_j) &\sim N(\bs{\mu_{0j},\Phi_j})\times Wishart (n, V)  \forall j=1,...,K ,\\
+  \bs{p}&\sim Dirichlet(\bs{\alpha}),
+\end{aligned} 
+$$
+where for each individual $i$, $z_i$ is a latent unobserved component membership variable indicating which component in the mixture it belongs to. 
+
+We inference on the posterior cluster parameters by MCMC sampling, using the r package mixAK [@R-mixAK], which does exert some additional prior constraints. We plug in the values of $(\bs{\mu_j},\Sigma_j)$ using cluster parameters we derive from DPGMM. However, $\alpha$ vector is required to be uniform. Thus we place a small $\bs{\alpha} = \bs{1}$, representing weak prior belief, allowing the model to learn the posterior weighted towards data itself. Another notable fact is that the MixAK package only allows a uniform parameter $V$, and gives the option to specify $V$ only through specifying the hyperprior parameters of a Gamma distribution [@R-mixAK]. According to the documentation page of the package, matrix $V$ is assumed to be diagonal with $\gamma_1,\gamma_2,...,\gamma_p$  on the diagonal, and for each $\gamma_j,$ $\gamma_j^{-1} \sim Gamma(g_j,h_j)$.
+
+As we checked out the covariance matrix of the traits, we find that most of them are diagonally dominant, in which case the diagonal entries (variances) are much larger than the off-diagonal entries (covariances), mostly by one or two orders of magnitude. Hence, it is reasonable to simplify $V$ to a diagonal matrix to save the computational cost. Next, we checked that the variances of each trait indeed nicely follow an inverse-gamma distribution (see appendix for diagnostics of fitting gamma to the variance distribution \@ref(Gaussian)). Since matrix $V$ is the scale matrix parameters of the Wishart prior placed on cluster covariance matrix $\Sigma_j$ and that it does not change with different subpopulations, we performed the following elicitation: 
+
+- Draw 1000 random samples of size 1000 from the dataset and calulated the 5 by 5 covariance matrix $C_i$ for $i =1,2,...1000$. 
+- For j =1,2,..,5, extract samples $L_j=\{C_i[j,j]\}^{1000}_{i=1}$.
+- For j =1,2,..,5, fit a gamma distribution using $L_j$, using the r package $fitdistrplus$, and use the estimation from the output to be our $\{ g_j,h_j \}$ [@R-fitdistrplus] [@R-fitdistrplus-article].
+
+For MCMC diagnostics, we examined the traceplots for the parameters we are interested in ($\mu$ and weights) to check if the MCMC generates results representative of the real distribution (see Appendix \@ref(diagnostics)). We observed that the autocorralaion of the parameters varies--the autocorrelation of weights are generally later than that of $\mu$. The traceplots show that the sampling from the distribution is in a fairly consistent way and not meandering around the sample space, which indicates chain mixes well.
+
+
+# Results
+
+Our analysis yields five clusters each with distinct and interpretable personality types, and we plotted the mean vector of the Gaussian distribution of each type. (See Figure \@ref(fig:mixAK-clusters)). The first and most heavily weighted (with a weight of 44.49%) cluster has the personality score very close to average in all subtraits category, thus representing an average type of personality. 
+
+The rest of the clusters follows more interesting patterns. We denote the personality type represented by the yellow color as "role model" since it has the highest score of "Agreeableness" and "Openness" and above average in the rest of three subtraits, all socially desirable traits except for Neuroticism (it is only slightly above average so it still supports our classification nicely). 
+
+In fact, three replicate personality types has been under consistent research focus and appeared widely in Literature since 2004, and they are "Resisilient","Overcontrolled",and "Undercontrolled", also known as ARC-type classification [@donnellan2010resilient][@gerlach_robust_2018]. A documented association of those three personality types with Big Five models are summarized by Donnellan and Robins in 2010; we listed their summary in Table \@ref(tab:arc-table) [@donnellan2010resilient].
+
+Comparing the finding and our cluster model, high identifiability of our clusters with minor refinement could be observed. The purple, red and blue cluster in Figure \@ref(fig:mixAK-clusters) can be nicely identified with "Resislient","Overcontrolled" and "Undercontrolled" respectively by matching the score distribution with documented characteristics in Table \@ref(tab:arc-table). The match is not exact, however. As we can see in the "Undercontrolled" group, Conscientiousness is not significantly low below the average. In addition, "Extroversion" and "Conscientiouness" are only slightly above average.
+
+The reasonable consistency of our clustering results with existing literature indicates validity of our modeling approach while minor deviations reveal the unique characteristics of this dataset at hands and contribute to the continued debate over replicability and robustness of the ARC-type classification [@donnellan2010resilient]. Our results demonstrate that ARC-type classification might be only a minimal set of the general topology of personality types as we introduced two new types, "average" and "role model", a result that is also obtained by Northwestern study in 2018 [@gerlach_robust_2018]. Those two personality types could be analyzed more extensively in the future and cross-validated from other datasets; and subsequent research could be to investigate the predictive validity of personal developmental outcome on those two types.
+
+
+
+```{r arc-table, tab.align="center",tab.cap="Literature findings of Big Five trait proﬁles correlation with the three replicable personality types",out.width="50%"}
+
+dt <- data.frame(Resilient=c("high","--","high","low","--"),Overcontrolled=c("low","--","--","high","--"),UnderControlled=c("--","Low","Low","--","--"))
+rownames(dt) <- c("Extroversion","Agreeableness","Conscientiousness","Neuroticism","Openness")
+library(dplyr)
+library(kableExtra)
+dt%>%
+  knitr::kable(format = "latex", 
+                 booktabs = T, 
+                 caption = "Literature findings of Big Five trait proﬁles correlation with the three replicable personality types", 
+                 escape = F) %>%
+  kable_styling(latex_options = 'HOLD_position',position = "center")
+```
+
+
+# Conclusion
+
+This paper provides an alternative clustering methodology to uncover latent personality types using Big Five personality data. Nonparametric learning using Dirichlet Process Gaussian Mixture model was used to decide the optimal cluster size while subsequent Gaussian mixture model was used to update and refine the cluster parameters. It provides a valuable methodology to conduct Bayesian unsupervised clustering on Big Five personality data, and the model strength are validated by existing literature as some consistency is observed. 
+
+Furthermore, the results validated the existing "ARC" types of personality: "UnderControlled","Overcontrolled" and "Resislient", but also showed the existence of two new types, "Role model" and "Average", which shares some consistency with another recent study. 
+
+However, due to hardware limitations, the research is only able to run 10,000 samples (less than one percent of the overall data) for the Dirichlet Process for Gaussian Mixture Models and 200,000 samples (less than one fifth of the overall data) for fixed number cluster Gaussian Mixture Model, so the result might be compromised to some extent by the limited samples we used. Moreover, the package we are using only allows use set the prior for population variance estimation only. While this setting should reduce the computation cost, it also leads to a lack of estimation for the covariance terms between the traits, though the covariances are generally small. Lastly, we only determined the major personality types, and disregarded clusters (potential personality types) that are smaller than 10% of the population, which should have been more explored if we had more time.  
+
+Future work should be directed towards applying the algorithm to more cross-cultural dataset and to eliminate more modeling constraints as we currently are subject to. The classification results of this study should also be critically assessed and built upon in future research. 
+
+
+```{r mixAK-clusters, fig.cap="Mean vectors of 5 identified clusters of personality types",fig.align="center"}
+#read result of MCMC
+post_data <- readRDS("Posterior_Final.rds")
+  
+#order by percentage populatoin
+order_indx <- c(3,4,5,1,2)
+
+cols <- c("red","blue","salmon3","orange","purple")
+
+#texts map to graph in order: 4,5,1,2,3
+texts <- c("overcontrolled","undercontrolled","average","role model","Resilient")
+
+# Plot cluster means 
+par(mfrow=c(2,3))
+for(i in order_indx){
+  plot(x=1:5,y=post_data$poster.mean.mu[i,],ylim=c(-2,2),
+       xlab = "subtraits",ylab="z-score", 
+       main=,
+       sub=paste(round(post_data$poster.mean.w[i]*100,2),"% of total population"),
+       col=cols[i],
+       bg=cols[i],
+       pch=22,
+       xaxt="n")
+  text(x=3,y=1.5,label=texts[i],col=cols[i],pos=3,offset = 0,cex=1.2)
+  abline(h=0, col="black",lwd=1, lty=2)
+  axis(side = 1, at = 1:5,labels = c("E","N","A","C","O"))
+}
+
+#'Extroversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness
+```
+
+
+# References {-}
+
+<div id="refs"></div>
+
+# Appendix {-}
+
+## Github link
+Link to the Code used for this project: https://github.com/DannyLuo-zp/360finalproject
+
+## EDA country{#EDA-country}
+
+See Figure \@ref(fig:eda-c)
+```{r}
+library(dplyr)
+library(dirichletprocess)
+library(ggplot2)
+library(patchwork)
+library(gridExtra)
+```
+
+```{r}
+data_raw = read.csv("../data-final.csv", sep='\t', na.strings = "NULL")
+```
+
+```{r}
+data = data.frame(data_raw)
+
+data <- data[ -c(51:107) ]
+data <- data[ -c(52:53) ]
+
+#print(nrow(data))
+#head(data)
+```
+
+```{r}
+data <- na.omit(data)
+#nrow(data)
+```
+
+```{r}
+countries <- data %>% count(country)
+countries <- countries[countries$n>=5000,]
+```
+
+```{r eda-c,fig.cap="Number of participants in countries", fig.align='center',out.width="70%"}
+ggplot(countries, aes(reorder(country, -n, sum), n, fill = country)) +
+  geom_bar(stat="identity", width = 0.8)+
+  geom_text(aes(label=n), vjust=-0.3, size=2)+
+  theme_minimal()+
+  theme(legend.position="none")+
+  labs(title= "Countries With More Than 5000 Participants",
+                      y="Participants", x = element_blank())
+```
+
+## EDA Normalcy {#normal}
+See Figure \@ref(fig:eda-norm)
+```{r}
+pos_keyed_vars <-  c('EXT1', 'EXT3', 'EXT5', 'EXT7', 'EXT9',
+                    'EST1', 'EST3', 'EST5', 'EST6', 'EST7', 
+                    'EST8', 'EST9', 'EST10',
+                    'AGR2', 'AGR4', 'AGR6', 'AGR8', 'AGR9', 'AGR10',
+                    'CSN1', 'CSN3', 'CSN5', 'CSN7', 'CSN9', 'CSN10', 
+                    'OPN1', 'OPN3', 'OPN5', 'OPN7', 'OPN8', 'OPN9', 
+                    'OPN10')
+neg_keyed_vars <-  c('EXT2', 'EXT4', 'EXT6', 'EXT8', 'EXT10',
+                    'EST2', 'EST4',
+                    'AGR1', 'AGR3', 'AGR5', 'AGR7', 
+                    'CSN2', 'CSN4', 'CSN6', 'CSN8', 
+                    'OPN2', 'OPN4', 'OPN6')
+```
+
+```{r}
+for(key in neg_keyed_vars){
+  data[key]=6-data[key]
+}
+```
+
+```{r}
+data <- data %>% mutate(
+  EXT=rowSums(data[1:10]),
+  EST=rowSums(data[11:20]),
+  AGR=rowSums(data[21:30]),
+  CSN=rowSums(data[31:40]),
+  OPN=rowSums(data[41:50]))
+score_data_final <- data[,52:56]
+```
+
+```{r eda-norm, fig.cap="Normalcy check",fig.align="center",out.width="70%"}
+traits = c('EXT', 'EST', 'AGR', 'CSN', 'OPN')
+trait_labels = c('Extroversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness')
+myplots <- list()
+
+
+p1 <- ggplot(score_data_final, aes(x= score_data_final[,1] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[1])
+p2 <- ggplot(score_data_final, aes(x= score_data_final[,2] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[2])
+p3 <- ggplot(score_data_final, aes(x= score_data_final[,3] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[3])
+p4 <- ggplot(score_data_final, aes(x= score_data_final[,4] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[4])
+p5 <- ggplot(score_data_final, aes(x= score_data_final[,5] ))+
+  geom_histogram(colour="black", fill="lightblue",binwidth=3)+
+  theme_minimal()+
+  theme(axis.title.x=element_blank(),
+      axis.ticks.x=element_blank(),
+      axis.title.y=element_blank())+
+  labs(title= trait_labels[5])
+
+grid.arrange(p1,p2,p3,p4,p5, nrow = 2)
+```
+
+
+## Personality Test Questions / Comprehensive Data description. {#question-list}
+
+The following items were presented on one page and each was rated on a five point scale using radio buttons. The order on page was was EXT1, AGR1, CSN1, EST1, OPN1, EXT2, etc.
+
+- EXT1	I am the life of the party.
+- EXT2	I don't talk a lot.
+- EXT3	I feel comfortable around people.
+- EXT4	I keep in the background.
+- EXT5	I start conversations.
+- EXT6	I have little to say.
+- EXT7	I talk to a lot of different people at parties.
+- EXT8	I don't like to draw attention to myself.
+- EXT9	I don't mind being the center of attention.
+- EXT10	I am quiet around strangers.
+- EST1	I get stressed out easily.
+- EST2	I am relaxed most of the time.
+- EST3	I worry about things.
+- EST4	I seldom feel blue.
+- EST5	I am easily disturbed.
+- EST6	I get upset easily.
+- EST7	I change my mood a lot.
+- EST8	I have frequent mood swings.
+- EST9	I get irritated easily.
+- EST10	I often feel blue.
+- AGR1	I feel little concern for others.
+- AGR2	I am interested in people.
+- AGR3	I insult people.
+- AGR4	I sympathize with others' feelings.
+- AGR5	I am not interested in other people's problems.
+- AGR6	I have a soft heart.
+- AGR7	I am not really interested in others.
+- AGR8	I take time out for others.
+- AGR9	I feel others' emotions.
+- AGR10	I make people feel at ease.
+- CSN1	I am always prepared.
+- CSN2	I leave my belongings around.
+- CSN3	I pay attention to details.
+- CSN4	I make a mess of things.
+- CSN5	I get chores done right away.
+- CSN6	I often forget to put things back in their proper place.
+- CSN7	I like order.
+- CSN8	I shirk my duties.
+- CSN9	I follow a schedule.
+- CSN10	I am exacting in my work.
+- OPN1	I have a rich vocabulary.
+- OPN2	I have difficulty understanding abstract ideas.
+- OPN3	I have a vivid imagination.
+- OPN4	I am not interested in abstract ideas.
+- OPN5	I have excellent ideas.
+- OPN6	I do not have a good imagination.
+- OPN7	I am quick to understand things.
+- OPN8	I use difficult words.
+- OPN9	I spend time reflecting on things.
+- OPN10	I am full of ideas.
+
+## Dirichlet Process results  {#dpresults}
+
+### Mean vectors of the selected groups
+
+See Figure \@ref(fig:mean-dp)
+```{r mean-dp,fig.cap="Mean vectors from Dirichlet",out.width ="70%",fig.align="center"}
+
+dp_data <- readRDS("DP_result_updated.rds")
+
+
+# Result from DP
+
+#dp_data$clusterParameters$mu[,,2]
+par(mfrow=c(4,4)) 
+
+# selection threshold
+epsilon=0.10
+S=10000
+
+# retain cluster if only size >= epsilon * S
+cluster_final_indx <- c()
+for(i in 1:dp_data$numberClusters){
+  if(dp_data$pointsPerCluster[i]>=epsilon*S){
+    cluster_final_indx <- c(cluster_final_indx,i)
+  }
+}
+
+# Plot cluster means 
+par(mfrow=c(2,4))
+for(i in cluster_final_indx){
+  plot(x=1:5,y=dp_data$clusterParameters$mu[,,i],ylim=c(-3,3),
+       xlab = "subtraits",ylab="score", 
+       main=paste(" mean for cluster",i),
+       sub=paste(round(dp_data$pointsPerCluster[i]/S*100,2),"%total population"),
+       xaxt="n")
+  axis(side = 1, at = 1:5,labels = c("E","N","A","C","O"))
+}
+
+```
+
+
+### Covariance Matrix of the selected groups 
+
+
+
+```{r}
+dp_data$clusterParameters$sig[,,1]
+dp_data$clusterParameters$sig[,,2]
+dp_data$clusterParameters$sig[,,6]
+dp_data$clusterParameters$sig[,,7]
+dp_data$clusterParameters$sig[,,8]
+
+```
+## Gamma fitting for population variance distribution {#Gaussian}
+
+See Figures \@ref(fig:gamma-1),\@ref(fig:gamma-2),\@ref(fig:gamma-3),\@ref(fig:gamma-4),\@ref(fig:gamma-5).
+```{r,echo=FALSE}
+library(fitdistrplus)
+score_data_final<-readRDS("score_final.rds")
+
+g1_samples <- c()
+g2_samples <- c()
+g3_samples <- c()
+g4_samples <- c()
+g5_samples <- c()
+
+for(i in 1:1000){
+  matrix =cov( sample_n(score_data_final,1000))
+  g1_samples[i] <- 1/matrix[1,1]
+  g2_samples[i] <- 1/matrix[2,2]
+  g3_samples[i] <- 1/matrix[3,3]
+  g4_samples[i] <- 1/matrix[4,4]
+  g5_samples[i] <- 1/matrix[5,5]
+}
+
+gamma_fit1<-fitdist(g1_samples,distr = "gamma", method="mle")
+gamma_fit2<-fitdist(g2_samples,distr = "gamma", method="mle")
+gamma_fit3<-fitdist(g3_samples,distr = "gamma", method="mle")
+gamma_fit4<-fitdist(g4_samples,distr = "gamma", method="mle")
+gamma_fit5<-fitdist(g5_samples,distr = "gamma", method="mle")
+
+```
+```{r gamma-1,echo=FALSE, fig.height=6,fig.width=5,out.width = "70%",fig.align="center" ,fig.cap="Fitting gamma to the variance distribution of trait 1"}
+
+plot(gamma_fit1)
+```
+```{r gamma-2,echo=FALSE, fig.height=6,fig.width=5,out.width = "70%",fig.align="center" ,fig.cap="Fitting gamma to the variance distribution of trait 2"}
+
+plot(gamma_fit2)
+```
+```{r gamma-3,echo=FALSE, fig.height=6,fig.width=5,out.width = "70%",fig.align="center" ,fig.cap="Fitting gamma to the variance distribution of trait 3"}
+
+plot(gamma_fit3)
+```
+```{r gamma-4,echo=FALSE, fig.height=6,fig.width=5,out.width = "70%",fig.align="center" ,fig.cap="Fitting gamma to the variance distribution of trait 4"}
+
+plot(gamma_fit4)
+```
+```{r gamma-5,echo=FALSE, fig.height=5,fig.width=5,out.width = "70%",fig.align="center" ,fig.cap="Fitting gamma to the variance distribution of trait 5"}
+
+plot(gamma_fit5)
+```
+
+
+## MCMC Diagnostics for cluster means and weights {#diagnostics}
+
+See diagnostics on cluster means in Figure 11-15 , weights in Figure \@ref(fig:d-2).
+
+```{r}
+#read result 
+post_data <- readRDS("Posterior_Final.rds")
+```
+
+```{r cluster-mean,fig.height=10,fig.width=6,out.width = "70%",fig.align="center" ,fig.cap="Traceplots and Autocorrelation plots for cluster means"}
+##MCMC Diagnostics for means
+N=5000
+
+
+col_names=colnames(post_data$mu)
+
+
+par(mfrow=c(5,2),mar=c(5,5,5,5))
+
+for(i in 1:length(col_names)){
+  plot(1:N,post_data$mu[,i],type="l",ylab=col_names[i],xlab="Iter")
+  acf(post_data$mu[,i],ylab=col_names[i],main="")
+}
+
+```
+
+
+```{r d-2,fig.height=10,fig.width=6,out.width = "70%",fig.cap="Traceplots and Autocorrelation plots for weights",fig.align="center"}
+##MCMC Diagnostics for weights
+library(coda)
+N=5000
+
+
+col_names=colnames(post_data$w)
+
+par(mfrow=c(5,2),mar=c(5,5,5,5))
+
+for(i in 1:length(col_names)){
+  plot(1:N,post_data$w[,i],type="l",ylab=col_names[i],xlab="Iter")
+  acf(post_data$w[,i],ylab=col_names[i],main="")
+}
+```
+
+
+
+
+
